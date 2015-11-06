@@ -1,0 +1,124 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>CANVASサンプル「じゃんけん」</title>
+	</head>
+	<style>
+		body{
+			text-align: center;
+			}
+	</style>
+	<body>
+
+		<!-- ヘッダ -->
+		<header>
+			<h1>CANVASサンプル</h1>
+		</header>
+
+		<!-- メインコンテンツ -->
+		<article>
+			<hgroup>
+				<h1>じゃんけん</h1>
+			</hgroup>
+			<aside>
+				<p>ボタンを押すとじゃんけんできます</p>
+				<canvas id="canvas" width="500" height="500" style="display:block; margin:10px auto;border:solid 1px #ccc"></canvas>
+			</aside>
+		</article>
+
+		<!-- フッタ -->
+		<footer>
+			Copyright 2015
+		</footer>
+		<script>
+			function loop() {
+					/* Canvas要素の定義など */
+					var cs  = document.getElementById('canvas');
+					var ctx = cs.getContext('2d');
+					var w = cs.width;
+					var h = cs.height;
+					var ww = window.innerWidth;
+					var x = 0;
+					var mouseX;
+					var mouseY;
+
+			    /* 舞台用意 */
+			    function render() {
+			        ctx.clearRect(0, 0, w, h); // Canvas全体をクリア。必ず必要ないと何度も書き直しー
+
+			        ctx.beginPath();
+
+			        //ぐー
+			        ctx.strokeRect(105, 65, 287, 287);
+			        //ちょき
+			        ctx.strokeRect(28, 400, 141, 63);
+			        //ぱー
+			        ctx.strokeRect(179, 400, 141, 63);
+			        //ランダム表示
+			        ctx.strokeRect(329, 400, 141, 63); 
+
+			        ctx.stroke(); //これをきじゅつしないと描画されない
+
+					ctx.fillStyle = "black";
+					ctx.font = "20px 'Monotype Corsiva'";
+
+					/* textBaselineにmiddleをセット */
+					ctx.textBaseline = "middle";
+					ctx.fillText('ぐー', 76, 430);
+					ctx.fillText('ちょき', 217, 430);
+					ctx.fillText('ぱー', 377, 430);
+				    }
+				    //100ミリ秒
+				    //setInterval(render, 100);
+				    render();
+					document.addEventListener('mousedown', test);
+
+					function test() {
+						mouseX = event.pageX-((ww-450)/2);
+						mouseY = event.pageY-200;
+					    //ctx.clearRect( 0, 0, w, h); 
+						render();
+
+						//hitTest
+						if(mouseX<169 && mouseX>28 && mouseY<463 && mouseY>400 ){
+							console.log("ぐー");
+							jankenEvent();
+							}
+						if(mouseX<320 && mouseX>179 && mouseY<463 && mouseY>400 ){
+							console.log("ちょき");
+							jankenEvent();
+							}
+						if(mouseX<470 && mouseX>329 && mouseY<463 && mouseY>400 ){
+							console.log("ぱー");
+							jankenEvent();
+							}
+						}
+					function  jankenEvent(){
+						var kekka = Math.floor(Math.random()*3);
+						var kekka_text;
+						switch(kekka){
+							case 0:
+									kekka_text = "ぐー";
+									break;
+							case 1:
+									kekka_text = "ちょき";
+									break;
+							case 2:
+									kekka_text = "ぱー";
+									break;
+							default:
+									break;
+
+							}
+							ctx.fillText(kekka_text, 225, 215);
+
+							console.log(kekka);
+							console.log(kekka_text);
+						};
+					}
+
+				//ハンドラー
+				loop();
+		</script>
+	</body>
+</html>
