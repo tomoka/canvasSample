@@ -207,16 +207,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,110,48);
 			this.MC_choki.visible = false;
 		}
 		
-		/* マウスクリックイベント
-		特定のシンボルインスタンス上でクリックすると、独自のカスタムコードを追加できる関数が実行されます。
-		
-		手順 :
-		1. 以下の「// カスタムコードを開始」と記述された行の後ろに新しい行を挿入して、カスタムコードを追加します。
-		シンボルインスタンスをクリックすると、コードが実行されます。
-		*/
-		
-		this.btn_choki.addEventListener("click", fl_MouseClickHandler_5.bind(this));
-		
+		//this.btn_choki.addEventListener("click", fl_MouseClickHandler_5.bind(this));
 		function fl_MouseClickHandler_5()
 		{
 			this.MC_choki.visible = true;
