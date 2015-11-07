@@ -1,215 +1,51 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>CANVASサンプル「じゃんけん」</title>
-	</head>
-	<style>
-		body{
-			text-align: center;
-			}
-	</style>
-	<body>
+<head>
+<meta charset="UTF-8">
+<title>jyankenSample</title>
 
-		<!-- ヘッダ -->
-		<header>
-			<h1>CANVASサンプル</h1>
-		</header>
+<script src="http://code.createjs.com/easeljs-0.8.1.min.js"></script>
+<script src="http://code.createjs.com/tweenjs-0.6.1.min.js"></script>
+<script src="http://code.createjs.com/movieclip-0.8.1.min.js"></script>
+<script src="http://code.createjs.com/preloadjs-0.6.1.min.js"></script>
+<script src="jyankenSample.js"></script>
 
-		<!-- メインコンテンツ -->
-		<article>
-			<hgroup>
-				<h1>じゃんけん</h1>
-			</hgroup>
-			<aside>
-				<p>ボタンを押すとじゃんけんできます</p>
-				<canvas id="canvas" width="500" height="500" style="display:block; margin:10px auto;border:solid 1px #ccc"></canvas>
-			</aside>
-		</article>
+<script>
+var canvas, stage, exportRoot;
 
-		<!-- フッタ -->
-		<footer>
-			Copyright 2015
-		</footer>
-		<script>
-			/* Canvas要素の定義など */
-			var cs  = document.getElementById('canvas');
-			var ctx = cs.getContext('2d');
-			var w = cs.width;
-			var h = cs.height;
-			var ww;
-			var x = 0;
+function init() {
+	canvas = document.getElementById("canvas");
+	images = images||{};
+	ss = ss||{};
 
-			var canvasMargin;
-			var mouseX;
-			var mouseY;
+	var loader = new createjs.LoadQueue(false);
+	loader.addEventListener("fileload", handleFileLoad);
+	loader.addEventListener("complete", handleComplete);
+loader.loadFile({src:"images/jyankenSample_atlas_.json", type:"spritesheet", id:"jyankenSample_atlas_"}, true);
+	loader.loadManifest(lib.properties.manifest);
+}
 
-			var parBoxX1;
-			var parBoxX2;
+function handleFileLoad(evt) {
+	if (evt.item.type == "image") { images[evt.item.id] = evt.result; }
+}
 
-			var gooBoxX1;
-			var gooBoxX2;
+function handleComplete(evt) {
+	var queue = evt.target;
+	ss["jyankenSample_atlas_"] = queue.getResult("jyankenSample_atlas_");
+	exportRoot = new lib.jyankenSample();
 
-			var chokiBoxX1;
-			var chokiBoxX2;
+	stage = new createjs.Stage(canvas);
+	stage.addChild(exportRoot);
+	stage.update();
+	stage.enableMouseOver();
 
-			var me;
-			var score = 0;
+	createjs.Ticker.setFPS(lib.properties.fps);
+	createjs.Ticker.addEventListener("tick", stage);
+}
+</script>
+</head>
 
-			var kekka;
-			var kekka_text;
-
-
-			/* Imageオブジェクトを生成 */
-			var imgGoo = new Image();
-			var imgChoki = new Image();
-			var imgPar = new Image();
-			imgGoo.src = "goo.png";
-			imgChoki.src = "choki.png";
-			imgPar.src = "par.png";
-
-		    /* 舞台用意 */
-		    function render() {
-		        ctx.clearRect(0, 0, w, h); // Canvas全体をクリア。必ず必要ないと何度も書き直しー
-
-		        ctx.beginPath();
-
-		        //ランダム表示
-		        ctx.strokeRect(105, 65, 287, 287);
-
-		        //ぐー
-		        ctx.strokeRect(28, 400, 141, 63);
-		        //ちょき
-		        ctx.strokeRect(179, 400, 141, 63);
-		        //ぱー
-		        ctx.strokeRect(329, 400, 141, 63); 
-
-		        ctx.stroke(); //これをきじゅつしないと描画されない
-
-				ctx.fillStyle = "black";
-				ctx.font = "20px 'Monotype Corsiva'";
-
-				/* textBaselineにmiddleをセット */
-				ctx.textBaseline = "middle";
-				ctx.fillText('ぐー', 76, 430);
-				ctx.fillText('ちょき', 217, 430);
-				ctx.fillText('ぱー', 377, 430);
-
-				ctx.fillText('SCORE', 77, 50);
-				//tx.fillText(score, 200, 50);
-
-			    }
-			    //100ミリ秒
-			    //setInterval(render, 100);
-			    render();
-				//document.addEventListener('mousedown touchstart', test);
-
-			function test() {  //引数eventが入ってくる。test(event) → event = click;
-				ww = window.innerWidth;
-				canvasMargin = ((ww-502)/2);
-				mouseX = event.clientX;
-				mouseY = event.clientY;
-
-				parBoxX1 = canvasMargin + 20;
-				parBoxX2 = canvasMargin + 163;
-
-				gooBoxX1 = canvasMargin + 173;
-				gooBoxX2 = canvasMargin + 313;
-
-				chokiBoxX1 = canvasMargin + 326;
-				chokiBoxX2 = canvasMargin + 463;
-
-				render();
-
-
-				//hitTest()
-				ctx.fillStyle = "skyblue";
-				if(mouseY<637 && mouseY>575){
-					if(mouseX<parBoxX2 && mouseX>parBoxX1){
-						ctx.fillRect(28, 400, 141, 63);
-
-						ctx.fillStyle = "blue";
-						ctx.fillText('ぐー', 76, 430);
-						me = 0;
-						jankenEvent();
-						jankenHantei(me);
-						}
-					if(mouseX<gooBoxX2 && mouseX>gooBoxX1){
-						ctx.fillRect(179, 400, 141, 63);
-						ctx.fillStyle = "blue";
-						ctx.fillText('ちょき', 217, 430);
-						me = 1;
-						jankenEvent();
-						jankenHantei(me);
-						}
-					if(mouseX<chokiBoxX2 && mouseX>chokiBoxX1){
-						ctx.fillRect(329, 400, 141, 63);
-						ctx.fillStyle = "blue";
-						ctx.fillText('ぱー', 377, 430);
-						me = 2;
-						jankenEvent();
-						jankenHantei(me);
-						}
-					}
-
-				/*console.log("ww---->" + ww);
-				console.log("canvasMargin---->" + canvasMargin);
-				console.log("mouseX---->" + mouseX);
-				console.log("chokiBoxX1---->" + chokiBoxX1);
-				console.log("chokiBoxX2---->" + chokiBoxX2);
-				alert("mouseX---->" + mouseX);*/
-				};
-
-			function  jankenEvent(){
-				kekka = Math.floor(Math.random()*3);
-				switch(kekka){
-					case 0:
-							kekka_text = "ぐー";
-							ctx.drawImage(imgGoo, 100, 50);
-							break;
-					case 1:
-							kekka_text = "ちょき";
-							ctx.drawImage(imgChoki, 100, 50);
-							break;
-					case 2:
-							kekka_text = "ぱー";
-							ctx.drawImage(imgPar, 100, 50);
-							break;
-					default:
-							break;
-
-					}
-					ctx.fillText(kekka_text, 300, 300);
-
-					console.log(kekka);
-					console.log(kekka_text);
-				};
-
-			function  jankenHantei(me){
-				var me = me;
-				if(me == 0){
-					if(kekka == 0){score = score+1}
-					if(kekka == 1){score = score+2}
-					if(kekka == 2){score = score-1}
-					}
-				if(me == 1){
-					if(kekka == 0){score = score-1}
-					if(kekka == 1){score = score+1}
-					if(kekka == 2){score = score+2}
-					}
-				if(me == 2){
-					if(kekka == 0){score = score+2}
-					if(kekka == 1){score = score-1}
-					if(kekka == 2){score = score+1}
-					}
-					console.log(score);
-					ctx.fillText(score, 200, 50);
-				}
-
-			//ハンドラー
-			render();
-			document.addEventListener('click', test);
-
-			console.log("描画完了");
-		</script>
-	</body>
+<body onload="init();" style="background-color:#D4D4D4">
+	<canvas id="canvas" width="550" height="400" style="background-color:#FFFFFF"></canvas>
+</body>
 </html>
