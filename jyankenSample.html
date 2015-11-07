@@ -31,94 +31,184 @@
 			Copyright 2015
 		</footer>
 		<script>
-			function loop() {
-					/* Canvas要素の定義など */
-					var cs  = document.getElementById('canvas');
-					var ctx = cs.getContext('2d');
-					var w = cs.width;
-					var h = cs.height;
-					var ww = window.innerWidth;
-					var x = 0;
-					var mouseX;
-					var mouseY;
+			/* Canvas要素の定義など */
+			var cs  = document.getElementById('canvas');
+			var ctx = cs.getContext('2d');
+			var w = cs.width;
+			var h = cs.height;
+			var ww;
+			var x = 0;
 
-			    /* 舞台用意 */
-			    function render() {
-			        ctx.clearRect(0, 0, w, h); // Canvas全体をクリア。必ず必要ないと何度も書き直しー
+			var canvasMargin;
+			var mouseX;
+			var mouseY;
 
-			        ctx.beginPath();
+			var parBoxX1;
+			var parBoxX2;
 
-			        //ぐー
-			        ctx.strokeRect(105, 65, 287, 287);
-			        //ちょき
-			        ctx.strokeRect(28, 400, 141, 63);
-			        //ぱー
-			        ctx.strokeRect(179, 400, 141, 63);
-			        //ランダム表示
-			        ctx.strokeRect(329, 400, 141, 63); 
+			var gooBoxX1;
+			var gooBoxX2;
 
-			        ctx.stroke(); //これをきじゅつしないと描画されない
+			var chokiBoxX1;
+			var chokiBoxX2;
 
-					ctx.fillStyle = "black";
-					ctx.font = "20px 'Monotype Corsiva'";
+			var me;
+			var score = 0;
 
-					/* textBaselineにmiddleをセット */
-					ctx.textBaseline = "middle";
-					ctx.fillText('ぐー', 76, 430);
-					ctx.fillText('ちょき', 217, 430);
-					ctx.fillText('ぱー', 377, 430);
-				    }
-				    //100ミリ秒
-				    //setInterval(render, 100);
-				    render();
-					document.addEventListener('mousedown', test);
+			var kekka;
+			var kekka_text;
 
-					function test() {
-						mouseX = event.pageX-((ww-450)/2);
-						mouseY = event.pageY-200;
-					    //ctx.clearRect( 0, 0, w, h); 
-						render();
 
-						//hitTest
-						if(mouseX<169 && mouseX>28 && mouseY<463 && mouseY>400 ){
-							console.log("ぐー");
-							jankenEvent();
-							}
-						if(mouseX<320 && mouseX>179 && mouseY<463 && mouseY>400 ){
-							console.log("ちょき");
-							jankenEvent();
-							}
-						if(mouseX<470 && mouseX>329 && mouseY<463 && mouseY>400 ){
-							console.log("ぱー");
-							jankenEvent();
-							}
+			/* Imageオブジェクトを生成 */
+			var imgGoo = new Image();
+			var imgChoki = new Image();
+			var imgPar = new Image();
+			imgGoo.src = "goo.png";
+			imgChoki.src = "choki.png";
+			imgPar.src = "par.png";
+
+		    /* 舞台用意 */
+		    function render() {
+		        ctx.clearRect(0, 0, w, h); // Canvas全体をクリア。必ず必要ないと何度も書き直しー
+
+		        ctx.beginPath();
+
+		        //ランダム表示
+		        ctx.strokeRect(105, 65, 287, 287);
+
+		        //ぐー
+		        ctx.strokeRect(28, 400, 141, 63);
+		        //ちょき
+		        ctx.strokeRect(179, 400, 141, 63);
+		        //ぱー
+		        ctx.strokeRect(329, 400, 141, 63); 
+
+		        ctx.stroke(); //これをきじゅつしないと描画されない
+
+				ctx.fillStyle = "black";
+				ctx.font = "20px 'Monotype Corsiva'";
+
+				/* textBaselineにmiddleをセット */
+				ctx.textBaseline = "middle";
+				ctx.fillText('ぐー', 76, 430);
+				ctx.fillText('ちょき', 217, 430);
+				ctx.fillText('ぱー', 377, 430);
+
+				ctx.fillText('SCORE', 77, 50);
+				//tx.fillText(score, 200, 50);
+
+			    }
+			    //100ミリ秒
+			    //setInterval(render, 100);
+			    render();
+				//document.addEventListener('mousedown touchstart', test);
+
+			function test() {  //引数eventが入ってくる。test(event) → event = click;
+				ww = window.innerWidth;
+				canvasMargin = ((ww-502)/2);
+				mouseX = event.clientX;
+				mouseY = event.clientY;
+
+				parBoxX1 = canvasMargin + 20;
+				parBoxX2 = canvasMargin + 163;
+
+				gooBoxX1 = canvasMargin + 173;
+				gooBoxX2 = canvasMargin + 313;
+
+				chokiBoxX1 = canvasMargin + 326;
+				chokiBoxX2 = canvasMargin + 463;
+
+				render();
+
+
+				//hitTest()
+				ctx.fillStyle = "skyblue";
+				if(mouseY<637 && mouseY>575){
+					if(mouseX<parBoxX2 && mouseX>parBoxX1){
+						ctx.fillRect(28, 400, 141, 63);
+
+						ctx.fillStyle = "blue";
+						ctx.fillText('ぐー', 76, 430);
+						me = 0;
+						jankenEvent();
+						jankenHantei(me);
 						}
-					function  jankenEvent(){
-						var kekka = Math.floor(Math.random()*3);
-						var kekka_text;
-						switch(kekka){
-							case 0:
-									kekka_text = "ぐー";
-									break;
-							case 1:
-									kekka_text = "ちょき";
-									break;
-							case 2:
-									kekka_text = "ぱー";
-									break;
-							default:
-									break;
-
-							}
-							ctx.fillText(kekka_text, 225, 215);
-
-							console.log(kekka);
-							console.log(kekka_text);
-						};
+					if(mouseX<gooBoxX2 && mouseX>gooBoxX1){
+						ctx.fillRect(179, 400, 141, 63);
+						ctx.fillStyle = "blue";
+						ctx.fillText('ちょき', 217, 430);
+						me = 1;
+						jankenEvent();
+						jankenHantei(me);
+						}
+					if(mouseX<chokiBoxX2 && mouseX>chokiBoxX1){
+						ctx.fillRect(329, 400, 141, 63);
+						ctx.fillStyle = "blue";
+						ctx.fillText('ぱー', 377, 430);
+						me = 2;
+						jankenEvent();
+						jankenHantei(me);
+						}
 					}
 
-				//ハンドラー
-				loop();
+				/*console.log("ww---->" + ww);
+				console.log("canvasMargin---->" + canvasMargin);
+				console.log("mouseX---->" + mouseX);
+				console.log("chokiBoxX1---->" + chokiBoxX1);
+				console.log("chokiBoxX2---->" + chokiBoxX2);
+				alert("mouseX---->" + mouseX);*/
+				};
+
+			function  jankenEvent(){
+				kekka = Math.floor(Math.random()*3);
+				switch(kekka){
+					case 0:
+							kekka_text = "ぐー";
+							ctx.drawImage(imgGoo, 100, 50);
+							break;
+					case 1:
+							kekka_text = "ちょき";
+							ctx.drawImage(imgChoki, 100, 50);
+							break;
+					case 2:
+							kekka_text = "ぱー";
+							ctx.drawImage(imgPar, 100, 50);
+							break;
+					default:
+							break;
+
+					}
+					ctx.fillText(kekka_text, 300, 300);
+
+					console.log(kekka);
+					console.log(kekka_text);
+				};
+
+			function  jankenHantei(me){
+				if(me == 0){
+					if(kekka == 0){score++}
+					if(kekka == 1){score+2}
+					if(kekka == 2){score--}
+					}
+				if(me == 1){
+					if(kekka == 0){score--}
+					if(kekka == 1){score++}
+					if(kekka == 2){score+2}
+					}
+				if(me == 2){
+					if(kekka == 0){score+2}
+					if(kekka == 1){score--}
+					if(kekka == 2){score++}
+					}
+					console.log(score);
+					ctx.fillText(score, 200, 50);
+				}
+
+			//ハンドラー
+			render();
+			document.addEventListener('click', test);
+
+			console.log("描画完了");
 		</script>
 	</body>
 </html>
