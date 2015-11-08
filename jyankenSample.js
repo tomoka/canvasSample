@@ -176,7 +176,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,110,48);
 		function fl_ClickToGoToAndStopAtFrame_2()
 		{
 			this.gotoAndStop(1);
-			console.log("tuginohure-muhe");
+			console.log("次のフレームへ");
 		}
 	}
 	this.frame_1 = function() {
@@ -184,39 +184,62 @@ p.nominalBounds = new cjs.Rectangle(0,0,110,48);
 		メインループ
 		*/
 		this.stop();
+		var count_score = 0;
+		var that = this;
 		
 		this.btn_goo.addEventListener("click", fl_MouseClickHandler_2.bind(this));
 		function fl_MouseClickHandler_2() {
 			this.MC_goo.visible = true;
 			this.MC_par.visible = false;
 			this.MC_choki.visible = false;
-		}
-		
-		function btn_chokiAction()
-		{
-			this.MC_choki.visible = true;
-			this.MC_goo.visible = false;
-			this.MC_par.visible = false;
+			jankenEvent();
 		}
 		
 		this.btn_par.addEventListener("click", fl_MouseClickHandler_4.bind(this));
-		function fl_MouseClickHandler_4()
-		{
+		function fl_MouseClickHandler_4() {
 			this.MC_par.visible = true;
 			this.MC_goo.visible = false;
 			this.MC_choki.visible = false;
+			jankenEvent();
 		}
 		
 		//this.btn_choki.addEventListener("click", fl_MouseClickHandler_5.bind(this));
-		function fl_MouseClickHandler_5()
-		{
+		function fl_MouseClickHandler_5() {
 			this.MC_choki.visible = true;
 			this.MC_goo.visible = false;
 			this.MC_par.visible = false;
-			// カスタムコードを開始
-			// このコード例では、出力パネルに "マウスクリック" という用語が表示されます。
-			alert("マウスクリック");
-			// カスタムコードを終了
+			jankenEvent();
+		}
+		
+		
+		//this.text_score.text = 100;
+		
+		function jankenEvent() {
+			kekka = Math.floor(Math.random() * 3);
+			switch (kekka) {
+				case 0:
+					kekka_text = "ぐー";
+					count_score = count_score + 2;
+					break;
+				case 1:
+					kekka_text = "ちょき";
+					count_score = count_score + 1;
+					break;
+				case 2:
+					kekka_text = "ぱー";
+					count_score = count_score + 3;
+				that.text_score.text = count_score;
+					break;
+				default:
+					break;
+		
+			}
+		
+			console.log(kekka);
+			console.log(kekka_text);
+			console.log(count_score);
+		
+			
 		}
 	}
 
@@ -231,16 +254,22 @@ p.nominalBounds = new cjs.Rectangle(0,0,110,48);
 
 	this.timeline.addTween(cjs.Tween.get(this.text).to({_off:true},1).wait(1));
 
-	// btn
-	this.text_1 = new cjs.Text("start", "30px 'A-OTF Maru Folk Pro R'", "#FFFFFF");
-	this.text_1.lineHeight = 32;
-	this.text_1.lineWidth = 82;
-	this.text_1.setTransform(287,274.2);
+	// score
+	this.text_score = new cjs.Text("", "40px 'A-OTF Maru Folk Pro R'");
+	this.text_score.name = "text_score";
+	this.text_score.textAlign = "right";
+	this.text_score.lineHeight = 42;
+	this.text_score.lineWidth = 145;
+	this.text_score.setTransform(430.5,30);
 
-	this.btn_start = new lib.btn1();
-	this.btn_start.setTransform(263,268.4);
-	new cjs.ButtonHelper(this.btn_start, 0, 1, 1);
+	this.text_1 = new cjs.Text("SCORE", "40px 'A-OTF Maru Folk Pro R'");
+	this.text_1.lineHeight = 42;
+	this.text_1.lineWidth = 148;
+	this.text_1.setTransform(124,28.8);
 
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.text_1},{t:this.text_score}]},1).wait(1));
+
+	// obj
 	this.instance = new lib.シンボル4();
 	this.instance.setTransform(135.5,336.4,1,1,0,0,0,24.5,24);
 
@@ -251,16 +280,28 @@ p.nominalBounds = new cjs.Rectangle(0,0,110,48);
 	this.instance_2.setTransform(414.5,334.9,1,1,0,0,0,20,28.5);
 
 	this.MC_choki = new lib.MC_choki();
-	this.MC_choki.setTransform(268,150,1,1,0,0,0,150,150);
+	this.MC_choki.setTransform(284.5,191,1,1,0,0,0,150,150);
 	this.MC_choki.visible = false;
 
 	this.MC_goo = new lib.MC_goo();
-	this.MC_goo.setTransform(284.5,150,1,1,0,0,0,150,150);
+	this.MC_goo.setTransform(284.5,191,1,1,0,0,0,150,150);
 	this.MC_goo.visible = false;
 
 	this.MC_par = new lib.MC_par();
-	this.MC_par.setTransform(290,143,1,1,0,0,0,150,150);
+	this.MC_par.setTransform(290,184,1,1,0,0,0,150,150);
 	this.MC_par.visible = false;
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.MC_par},{t:this.MC_goo},{t:this.MC_choki},{t:this.instance_2},{t:this.instance_1},{t:this.instance}]},1).wait(1));
+
+	// btn
+	this.text_2 = new cjs.Text("start", "30px 'A-OTF Maru Folk Pro R'", "#FFFFFF");
+	this.text_2.lineHeight = 32;
+	this.text_2.lineWidth = 82;
+	this.text_2.setTransform(287,274.2);
+
+	this.btn_start = new lib.btn1();
+	this.btn_start.setTransform(263,268.4);
+	new cjs.ButtonHelper(this.btn_start, 0, 1, 1);
 
 	this.btn_par = new lib.btn1();
 	this.btn_par.setTransform(272.5,336.4,1,1,0,0,0,55,24);
@@ -270,11 +311,11 @@ p.nominalBounds = new cjs.Rectangle(0,0,110,48);
 	this.btn_goo.setTransform(135.5,336.4,1,1,0,0,0,55,24);
 	new cjs.ButtonHelper(this.btn_goo, 0, 1, 1);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.btn_start,p:{regX:0,regY:0,x:263,y:268.4}},{t:this.text_1}]}).to({state:[{t:this.btn_goo},{t:this.btn_par},{t:this.btn_start,p:{regX:55,regY:24,x:414.5,y:336.4}},{t:this.MC_par},{t:this.MC_goo},{t:this.MC_choki},{t:this.instance_2},{t:this.instance_1},{t:this.instance}]},1).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.btn_start,p:{x:263,y:268.4}},{t:this.text_2}]}).to({state:[{t:this.btn_goo},{t:this.btn_par},{t:this.btn_start,p:{x:359.5,y:312.4}}]},1).wait(1));
 
 	// starge
 	this.instance_3 = new lib.シンボル1();
-	this.instance_3.setTransform(282,155,1,1,0,0,0,158,106);
+	this.instance_3.setTransform(282,196,1,1,0,0,0,158,106);
 	this.instance_3._off = true;
 
 	this.timeline.addTween(cjs.Tween.get(this.instance_3).wait(1).to({_off:false},0).wait(1));
