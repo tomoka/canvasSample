@@ -371,6 +371,7 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 		*/
 		
 		this.stop();
+		var that = this;
 		
 		/* クリックして特定のフレームに移動し、停止
 		特定のシンボルインスタンス上でクリックすると、再生ヘッドがタイムラインの指定フレームに移動し、ムービーが停止します。
@@ -380,12 +381,11 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 		1. 以下のコード内の数値 5 を、シンボルインスタンスのクリック時に再生ヘッドが移動するフレームの番号に置き換えます。
 		2. EaselJS のフレーム番号は、1 ではなく 0 から始まります。
 		*/
-		this.btn_start.addEventListener("click", fl_ClickToGoToAndStopAtFrame_2.bind(this));
-		
-		function fl_ClickToGoToAndStopAtFrame_2()
-		{
-			this.gotoAndStop(1);
+		this.btn_start.addEventListener("click", fl_ClickToGoToAndStopAtFrame_2);
+		function fl_ClickToGoToAndStopAtFrame_2(e) {
 			console.log("次のフレームへ");
+			that.btn_start.removeEventListener("click", fl_ClickToGoToAndStopAtFrame_2);
+			that.gotoAndStop(1);
 		}
 	}
 	this.frame_1 = function() {
@@ -406,36 +406,54 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 		ちょき = 1;
 		ぱー = 2;
 		*/
-		
-		this.btn_goo.addEventListener("click", fl_MouseClickHandler_2.bind(this));
-		function fl_MouseClickHandler_2() {
-			you = 0;
-			jankenEvent(you);
+		this.btn_goo.addEventListener("click", fl_MouseClickHandler_2);
+		function fl_MouseClickHandler_2(e) {
+				you = 0;
+				console.log("clicl");
+				jankenEvent(you);
+			//その場ですぐ消す場合
+				//e.currentTarget.removeEventListener("click", fl_MouseClickHandler_2);
 		}
 		
 		this.btn_par.addEventListener("click", fl_MouseClickHandler_4.bind(this));
 		function fl_MouseClickHandler_4() {
-			you = 2;
-			jankenEvent(you);
+				you = 2;
+				jankenEvent(you);
 		}
 		
 		this.btn_choki.addEventListener("click", fl_MouseClickHandler_5.bind(this));
 		function fl_MouseClickHandler_5() {
-			you = 1;
-			jankenEvent(you);
+				you = 1;
+				jankenEvent(you);
 		}
-		
 		
 		//this.text_score.text = 100;
 		
 		function jankenEvent(you) {
+			if (you == 0) {
+				that.MC_goo_you.visible = true;
+				that.MC_par_you.visible = false;
+				that.MC_choki_you.visible = false;
+			} else if (you == 1) {
+				that.MC_goo_you.visible = false;
+				that.MC_par_you.visible = false;
+				that.MC_choki_you.visible = true;
+			} else {
+				that.MC_goo_you.visible = false;
+				that.MC_par_you.visible = true;
+				that.MC_choki_you.visible = false;
+			}
+		
 			kekka = Math.floor(Math.random() * 3);
+		
+		
 			switch (kekka) {
 				case 0:
 					kekka_text = "ぐー";
 					that.MC_goo.visible = true;
 					that.MC_par.visible = false;
 					that.MC_choki.visible = false;
+					console.log("count_score--0-->　" + count_score);
 		
 					if (you == 0) {
 						count_score++;
@@ -458,8 +476,17 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 					}
 		
 					that.text_score.text = count_score;
-					if (count_score > 10) {
+					console.log("count_score---->　" + count_score);
+					console.log("that.text_score.text---->　" + that.text_score.text);
+					if (that.text_score.text > 10) {
+						console.log("that.text_score.text--enddddd-->　" + that.text_score.text);
+						console.log("--------case0---------------");
 						count_score = 0;
+						that.text_score.text = 0;
+						//後で消す場合
+						that.btn_goo.removeAllEventListeners("click");
+						that.btn_par.removeAllEventListeners("click");
+						that.btn_choki.removeAllEventListeners("click");
 						that.gotoAndStop(2);
 					}
 					break;
@@ -468,6 +495,7 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 					that.MC_goo.visible = false;
 					that.MC_par.visible = false;
 					that.MC_choki.visible = true;
+					console.log("count_score--1-->　" + count_score);
 		
 					if (you == 0) {
 						count_score = count_score + 2;
@@ -489,9 +517,17 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 						that.MC_lost.play();
 					}
 					that.text_score.text = count_score;
-					if (count_score > 10) {
+					console.log("count_score---->　" + count_score);
+					console.log("that.text_score.text---->　" + that.text_score.text);
+					if (that.text_score.text > 10) {
+						console.log("that.text_score.text--enddddd-->　" + that.text_score.text);
+						console.log("-----------case1------------");
 						count_score = 0;
 						that.text_score.text = 0;
+						//後で消す場合
+						that.btn_goo.removeAllEventListeners("click");
+						that.btn_par.removeAllEventListeners("click");
+						that.btn_choki.removeAllEventListeners("click");
 						that.gotoAndStop(2);
 					}
 					break;
@@ -500,6 +536,7 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 					that.MC_goo.visible = false;
 					that.MC_par.visible = true;
 					that.MC_choki.visible = false;
+					console.log("count_score--2-->　" + count_score);
 					if (you == 0) {
 						count_score--;
 						that.MC_win.visible = false;
@@ -520,27 +557,38 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 						that.MC_drow.play();
 					}
 					that.text_score.text = count_score;
-					if (count_score > 10) {
+					console.log("count_score---->　" + count_score);
+					console.log("that.text_score.text---->　" + that.text_score.text);
+					if (that.text_score.text > 10) {
+						console.log("that.text_score.text--enddddd-->　" + that.text_score.text);
+						console.log("------case2-----------------");
 						count_score = 0;
+						that.text_score.text = 0;
+						//後で消す場合
+						that.btn_goo.removeAllEventListeners("click");
+						that.btn_par.removeAllEventListeners("click");
+						that.btn_choki.removeAllEventListeners("click");
 						that.gotoAndStop(2);
 					}
 					break;
 				default:
-					if (count_score > 10) {
+					console.log("count_score--3-->　" + count_score);
+					console.log("count_score---->　" + count_score);
+					console.log("that.text_score.text---->　" + that.text_score.text);
+					if (that.text_score.text > 10) {
+						console.log("that.text_score.text--enddddd-->　" + that.text_score.text);
+						console.log("--------default---------------");
 						count_score = 0;
-						that.gotoAndStop(2);
 						that.text_score.text = 0;
+						//後で消す場合
+						that.btn_goo.removeAllEventListeners("click");
+						that.btn_par.removeAllEventListeners("click");
+						that.btn_choki.removeAllEventListeners("click");
+						that.gotoAndStop(2);
 					}
 					break;
 		
 			}
-		
-			console.log("-----------------------");
-			console.log(kekka);
-			console.log(kekka_text);
-			console.log(count_score);
-			console.log(that.text_score.text);
-			console.log("-----------------------");
 		
 		}
 	}
@@ -562,13 +610,14 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 		*/
 		
 		
-		this.button_2.addEventListener("click", fl_ClickToGoToAndStopAtFrame_4.bind(this));
+		this.button_2.addEventListener("click", fl_ClickToGoToAndStopAtFrame_4);
 		
-		function fl_ClickToGoToAndStopAtFrame_4()
+		function fl_ClickToGoToAndStopAtFrame_4(e)
 		{
 			count_score = 0;
 			that.text_score.text = 0;
-			this.gotoAndStop(0);
+			that.button_2.removeEventListener("click", fl_ClickToGoToAndStopAtFrame_4);
+			that.gotoAndStop(0);
 		}
 	}
 
@@ -583,14 +632,14 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 
 	// score
 	this.instance_1 = new lib.MC_score();
-	this.instance_1.setTransform(194.8,53.4,1,1,0,0,0,66.5,16.2);
+	this.instance_1.setTransform(194.8,33.4,1,1,0,0,0,66.5,16.2);
 
 	this.text_score = new cjs.Text("", "40px 'A-OTF Maru Folk Pro R'");
 	this.text_score.name = "text_score";
 	this.text_score.textAlign = "right";
 	this.text_score.lineHeight = 42;
 	this.text_score.lineWidth = 145;
-	this.text_score.setTransform(430.5,30);
+	this.text_score.setTransform(430.5,10);
 
 	this.instance_2 = new lib.MC_result();
 	this.instance_2.setTransform(286.7,146.4,1,1,0,0,0,76,16.2);
@@ -610,20 +659,32 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.MC_win},{t:this.MC_lost},{t:this.MC_drow}]},1).to({state:[]},1).wait(1));
 
 	// obj
+	this.MC_choki_you = new lib.MC_choki();
+	this.MC_choki_you.setTransform(379.5,169.2,0.693,0.693,0,0,0,150,150);
+	this.MC_choki_you.visible = false;
+
+	this.MC_goo_you = new lib.MC_goo();
+	this.MC_goo_you.setTransform(379.5,169.2,0.693,0.693,0,0,0,150,150);
+	this.MC_goo_you.visible = false;
+
+	this.MC_par_you = new lib.MC_par();
+	this.MC_par_you.setTransform(379.5,169.2,0.693,0.693,0,0,0,150,150);
+	this.MC_par_you.visible = false;
+
 	this.btn_goo = new lib.シンボル7();
 	this.btn_goo.setTransform(135.8,336.2,1,1,0,0,0,64.8,24.2);
 	new cjs.ButtonHelper(this.btn_goo, 0, 1, 1);
 
 	this.MC_choki = new lib.MC_choki();
-	this.MC_choki.setTransform(284.5,191,1,1,0,0,0,150,150);
+	this.MC_choki.setTransform(157.4,169.2,0.693,0.693,0,0,0,150,150);
 	this.MC_choki.visible = false;
 
 	this.MC_goo = new lib.MC_goo();
-	this.MC_goo.setTransform(284.5,191,1,1,0,0,0,150,150);
+	this.MC_goo.setTransform(157.4,169.2,0.693,0.693,0,0,0,150,150);
 	this.MC_goo.visible = false;
 
 	this.MC_par = new lib.MC_par();
-	this.MC_par.setTransform(290,184,1,1,0,0,0,150,150);
+	this.MC_par.setTransform(157.4,169.2,0.693,0.693,0,0,0,150,150);
 	this.MC_par.visible = false;
 
 	this.text = new cjs.Text("スタートへ戻る", "30px 'A-OTF Maru Folk Pro R'", "#FFFFFF");
@@ -632,7 +693,7 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 	this.text.lineWidth = 280;
 	this.text.setTransform(283.9,238.3);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.MC_par},{t:this.MC_goo},{t:this.MC_choki},{t:this.btn_goo}]},1).to({state:[{t:this.text}]},1).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.MC_par},{t:this.MC_goo},{t:this.MC_choki},{t:this.btn_goo},{t:this.MC_par_you},{t:this.MC_goo_you},{t:this.MC_choki_you}]},1).to({state:[{t:this.text}]},1).wait(1));
 
 	// btn
 	this.text_1 = new cjs.Text("start", "30px 'A-OTF Maru Folk Pro R'", "#FFFFFF");
@@ -661,6 +722,29 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 	new cjs.ButtonHelper(this.button_2, 0, 1, 1);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.btn_start},{t:this.text_1}]}).to({state:[{t:this.shape},{t:this.btn_choki},{t:this.btn_par}]},1).to({state:[{t:this.button_2}]},1).wait(1));
+
+	// starge
+	this.text_2 = new cjs.Text("YOU", "24px 'A-OTF Maru Folk Pro R'");
+	this.text_2.textAlign = "center";
+	this.text_2.lineHeight = 26;
+	this.text_2.lineWidth = 194;
+	this.text_2.setTransform(374.5,273.2);
+
+	this.text_3 = new cjs.Text("COM", "24px 'A-OTF Maru Folk Pro R'");
+	this.text_3.textAlign = "center";
+	this.text_3.lineHeight = 26;
+	this.text_3.lineWidth = 194;
+	this.text_3.setTransform(154,273.2);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#00CCFF").s().p("Av9P+IAA/7If7AAIAAf7g");
+	this.shape_1.setTransform(377.7,170.9);
+
+	this.shape_2 = new cjs.Shape();
+	this.shape_2.graphics.f("#CCCCCC").s().p("Av9P+IAA/7If7AAIAAf7g");
+	this.shape_2.setTransform(154.2,170.9);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.shape_2},{t:this.shape_1},{t:this.text_3},{t:this.text_2}]},1).to({state:[]},1).wait(1));
 
 }).prototype = p = new cjs.MovieClip();
 p.nominalBounds = new cjs.Rectangle(406,311,307.8,172.5);
