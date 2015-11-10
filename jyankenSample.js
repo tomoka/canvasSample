@@ -373,14 +373,6 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 		this.stop();
 		var that = this;
 		
-		/* クリックして特定のフレームに移動し、停止
-		特定のシンボルインスタンス上でクリックすると、再生ヘッドがタイムラインの指定フレームに移動し、ムービーが停止します。
-		メインタイムラインまたはムービークリップタイムライン上で使用できます。
-		
-		手順 :
-		1. 以下のコード内の数値 5 を、シンボルインスタンスのクリック時に再生ヘッドが移動するフレームの番号に置き換えます。
-		2. EaselJS のフレーム番号は、1 ではなく 0 から始まります。
-		*/
 		this.btn_start.addEventListener("click", fl_ClickToGoToAndStopAtFrame_2);
 		function fl_ClickToGoToAndStopAtFrame_2(e) {
 			console.log("次のフレームへ");
@@ -408,23 +400,23 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 		*/
 		this.btn_goo.addEventListener("click", fl_MouseClickHandler_2);
 		function fl_MouseClickHandler_2(e) {
-				you = 0;
-				console.log("clicl");
-				jankenEvent(you);
+			you = 0;
+			console.log("clicl");
+			jankenEvent(you);
 			//その場ですぐ消す場合
-				//e.currentTarget.removeEventListener("click", fl_MouseClickHandler_2);
+			//e.currentTarget.removeEventListener("click", fl_MouseClickHandler_2);
 		}
 		
 		this.btn_par.addEventListener("click", fl_MouseClickHandler_4.bind(this));
 		function fl_MouseClickHandler_4() {
-				you = 2;
-				jankenEvent(you);
+			you = 2;
+			jankenEvent(you);
 		}
 		
 		this.btn_choki.addEventListener("click", fl_MouseClickHandler_5.bind(this));
 		function fl_MouseClickHandler_5() {
-				you = 1;
-				jankenEvent(you);
+			you = 1;
+			jankenEvent(you);
 		}
 		
 		//this.text_score.text = 100;
@@ -444,8 +436,7 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 				that.MC_choki_you.visible = false;
 			}
 		
-			kekka = Math.floor(Math.random() * 3);
-		
+				kekka = Math.floor(Math.random() * 3);
 		
 			switch (kekka) {
 				case 0:
@@ -481,8 +472,6 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 					if (that.text_score.text > 10) {
 						console.log("that.text_score.text--enddddd-->　" + that.text_score.text);
 						console.log("--------case0---------------");
-						count_score = 0;
-						that.text_score.text = 0;
 						//後で消す場合
 						that.btn_goo.removeAllEventListeners("click");
 						that.btn_par.removeAllEventListeners("click");
@@ -522,8 +511,6 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 					if (that.text_score.text > 10) {
 						console.log("that.text_score.text--enddddd-->　" + that.text_score.text);
 						console.log("-----------case1------------");
-						count_score = 0;
-						that.text_score.text = 0;
 						//後で消す場合
 						that.btn_goo.removeAllEventListeners("click");
 						that.btn_par.removeAllEventListeners("click");
@@ -562,8 +549,6 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 					if (that.text_score.text > 10) {
 						console.log("that.text_score.text--enddddd-->　" + that.text_score.text);
 						console.log("------case2-----------------");
-						count_score = 0;
-						that.text_score.text = 0;
 						//後で消す場合
 						that.btn_goo.removeAllEventListeners("click");
 						that.btn_par.removeAllEventListeners("click");
@@ -578,8 +563,6 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 					if (that.text_score.text > 10) {
 						console.log("that.text_score.text--enddddd-->　" + that.text_score.text);
 						console.log("--------default---------------");
-						count_score = 0;
-						that.text_score.text = 0;
 						//後で消す場合
 						that.btn_goo.removeAllEventListeners("click");
 						that.btn_par.removeAllEventListeners("click");
@@ -587,9 +570,7 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 						that.gotoAndStop(2);
 					}
 					break;
-		
 			}
-		
 		}
 	}
 	this.frame_2 = function() {
@@ -614,8 +595,10 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 		
 		function fl_ClickToGoToAndStopAtFrame_4(e)
 		{
+			//初期化
 			count_score = 0;
 			that.text_score.text = 0;
+			//イベントリスナー削除
 			that.button_2.removeEventListener("click", fl_ClickToGoToAndStopAtFrame_4);
 			that.gotoAndStop(0);
 		}
@@ -628,23 +611,24 @@ p.nominalBounds = new cjs.Rectangle(-334,-103,667,204);
 	this.instance = new lib.MC_titile();
 	this.instance.setTransform(284.9,129.3,1,1,0,0,0,153.9,18.3);
 
-	this.timeline.addTween(cjs.Tween.get(this.instance).to({_off:true},1).wait(2));
-
-	// score
 	this.instance_1 = new lib.MC_score();
 	this.instance_1.setTransform(194.8,33.4,1,1,0,0,0,66.5,16.2);
 
+	this.instance_2 = new lib.MC_result();
+	this.instance_2.setTransform(286.7,97.4,1,1,0,0,0,76,16.2);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.instance_1}]},1).to({state:[{t:this.instance_2}]},1).wait(1));
+
+	// score
 	this.text_score = new cjs.Text("", "40px 'A-OTF Maru Folk Pro R'");
 	this.text_score.name = "text_score";
-	this.text_score.textAlign = "right";
+	this.text_score.textAlign = "center";
 	this.text_score.lineHeight = 42;
 	this.text_score.lineWidth = 145;
-	this.text_score.setTransform(430.5,10);
+	this.text_score.setTransform(358,13);
+	this.text_score._off = true;
 
-	this.instance_2 = new lib.MC_result();
-	this.instance_2.setTransform(286.7,146.4,1,1,0,0,0,76,16.2);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.text_score},{t:this.instance_1}]},1).to({state:[{t:this.instance_2}]},1).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.text_score).wait(1).to({_off:false},0).wait(1).to({x:283.2,y:156},0).wait(1));
 
 	// anime
 	this.MC_drow = new lib.MC_drow();
