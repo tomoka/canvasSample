@@ -1861,7 +1861,7 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 		console.log(winCount);
 		console.log(winCount / attackCount *100);
 		
-		this.text_score.text = "" + Math.floor(winCount / attackCount *100) + "" + "%";
+		this.text_score.text = "" + Math.floor(winCount / attackCount *100) + "" + "%" + "(" + attackCount + "回対戦)";
 		
 		this.button_2.addEventListener("click", fl_ClickToGoToAndStopAtFrame_4);
 		
@@ -1909,7 +1909,7 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 	this.text_score.setTransform(309.2,13);
 	this.text_score._off = true;
 
-	this.timeline.addTween(cjs.Tween.get(this.text_score).wait(1).to({_off:false},0).wait(1).to({x:287,y:213.8,color:NaN,lineWidth:230},0).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.text_score).wait(1).to({_off:false},0).wait(1).to({x:273.5,y:213.8,color:NaN,lineWidth:505},0).wait(1));
 
 	// add_score
 	this.MC_addScore = new lib.MC_num();
