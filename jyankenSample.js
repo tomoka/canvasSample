@@ -1612,6 +1612,10 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 		var count_score = 0;
 		var you;
 		
+		winCount = 0;
+		lostCount = 0;
+		attackCount = 0;
+		
 		this.MC_goo.visible = false;
 		this.MC_par.visible = false;
 		this.MC_choki.visible = false;
@@ -1667,6 +1671,7 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "+1";
 						that.MC_addScore.play();
 						that.MC_drow.play();
+						attackCount++;
 					} else if (you == 1) {
 						count_score--;
 						that.MC_win.visible = false;
@@ -1675,6 +1680,8 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "-1";
 						that.MC_addScore.play();
 						that.MC_lost.play();
+						attackCount++;
+						lostCount++;
 					} else {
 						count_score = count_score + 2;
 						that.MC_lost.visible = false;
@@ -1683,6 +1690,8 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "+2";
 						that.MC_addScore.play();
 						that.MC_win.play();
+						winCount++;
+						attackCount++;
 					}
 		
 					that.text_score.text = count_score;
@@ -1713,6 +1722,8 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "+2";
 						that.MC_addScore.play();
 						that.MC_win.play();
+						winCount++;
+						attackCount++;
 					} else if (you == 1) {
 						count_score++;
 						that.MC_lost.visible = false;
@@ -1721,6 +1732,7 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "+1";
 						that.MC_addScore.play();
 						that.MC_drow.play();
+						attackCount++;
 					} else {
 						count_score--;
 						that.MC_win.visible = false;
@@ -1729,6 +1741,8 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "-1";
 						that.MC_addScore.play();
 						that.MC_lost.play();
+						lostCount++;
+						attackCount++;
 					}
 					that.text_score.text = count_score;
 					console.log("count_score---->　" + count_score);
@@ -1757,6 +1771,8 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "-1";
 						that.MC_addScore.play();
 						that.MC_lost.play();
+						lostCount++;
+						attackCount++;
 					} else if (you == 1) {
 						count_score = count_score + 2;
 						that.MC_lost.visible = false;
@@ -1765,6 +1781,8 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "+2";
 						that.MC_addScore.play();
 						that.MC_win.play();
+						winCount++;
+						attackCount++;
 					} else {
 						count_score++;
 						that.MC_lost.visible = false;
@@ -1773,6 +1791,7 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "+1";
 						that.MC_addScore.play();
 						that.MC_drow.play();
+						attackCount++;
 					}
 					that.text_score.text = count_score;
 					console.log("count_score---->　" + count_score);
@@ -1838,20 +1857,15 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 		this.stop();
 		var that = this;
 		
-		/* クリックして特定のフレームに移動し、停止
-		特定のシンボルインスタンス上でクリックすると、再生ヘッドがタイムラインの指定フレームに移動し、ムービーが停止します。
-		メインタイムラインまたはムービークリップタイムライン上で使用できます。
+		console.log(attackCount);
+		console.log(winCount);
+		console.log(winCount / attackCount *100);
 		
-		手順 :
-		1. 以下のコード内の数値 5 を、シンボルインスタンスのクリック時に再生ヘッドが移動するフレームの番号に置き換えます。
-		2. EaselJS のフレーム番号は、1 ではなく 0 から始まります。
-		*/
-		
+		this.text_score.text = "" + Math.floor(winCount / attackCount *100) + "" + "%";
 		
 		this.button_2.addEventListener("click", fl_ClickToGoToAndStopAtFrame_4);
 		
-		function fl_ClickToGoToAndStopAtFrame_4(e)
-		{
+		function fl_ClickToGoToAndStopAtFrame_4(e) {
 			//初期化
 			count_score = 0;
 			that.text_score.text = 0;
@@ -1882,7 +1896,7 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 	this.instance_1.setTransform(155.8,33.4,1,1,0,0,0,66.5,16.2);
 
 	this.instance_2 = new lib.MC_result();
-	this.instance_2.setTransform(286.7,97.4,1,1,0,0,0,76,16.2);
+	this.instance_2.setTransform(286.7,69.4,1,1,0,0,0,76,16.2);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.instance_1}]},1).to({state:[{t:this.instance_2}]},1).wait(1));
 
@@ -1895,7 +1909,7 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 	this.text_score.setTransform(309.2,13);
 	this.text_score._off = true;
 
-	this.timeline.addTween(cjs.Tween.get(this.text_score).wait(1).to({_off:false},0).wait(1).to({x:286.4,y:156},0).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.text_score).wait(1).to({_off:false},0).wait(1).to({x:287,y:213.8,color:NaN,lineWidth:230},0).wait(1));
 
 	// add_score
 	this.MC_addScore = new lib.MC_num();
@@ -1938,7 +1952,15 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 	this.MC_par = new lib.MC_par();
 	this.MC_par.setTransform(154.5,186,0.693,0.693,0,0,0,150,150);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.MC_par},{t:this.MC_par_you},{t:this.MC_goo_you},{t:this.MC_choki_you},{t:this.MC_goo},{t:this.MC_choki}]},1).to({state:[]},1).wait(1));
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f("#F73B00").s().p("AgHBQIAAggIg/ABIAAgPIA/gDIABgJIAQAAIABAIIA8gBIAAAQQgNACgvABIgBAggAhDAQQAOgPAPgHIAJAKQgKANgSALgAggAKIADAAIAPgDQAQgbAJgLIALAIIgJAQIgIAJIAOgCIgDgGIAOgEIAHAMIAJgJQAPAHAJAKIgKAMQgOgJgJgKIAFAPIgNAFIgFgJQgZAIgdADgAgggRQAFgIAPgPIg2ABIAAgPIA7gEQgFgDAAgGQAAgFAEgDQAEgDAEgBQAGABAEAEQADAEAAAFQAAAEgCADIA3gCIAAAQQgYADgwABIAGAIIgKAOIAGAIIgMAKQgNgKgDgHgAg5gMQgDgDAAgGQAAgDACgDQADgEAGAAQAGAAAEAEQADADAAAGQABAKgMAAQgGAAgEgEgAAdgYQAIgHAQgHIAHANQgLAKgNAEg");
+	this.shape.setTransform(329.9,155.3,5.126,5.126);
+
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#F73B00").s().p("AgGBGIAAgBIAKgcIgGAAIAAgNIgGAJIgMgFIgBApQgPAAgOgCIABgQIALAAIABhlIgHAAIAAgSQAOgCAKABIAABYIAJgRIgFAAIAAgOIAOgBIAEgKIgPABIAAgQIAYgCIAUgmIAQAFIgJAUQANgLALgGIAJAMQgMAKgLAHIASAAIAAAPIgUACIAIAJIAWgBIAAANIgKABIAQAYIgNAIIgJgLIgPgTIgkABIgBADIgJASIANgBIAIgSIAQAFIgEAMIAcgBQgCAagIAaQgPgCgOgCIADgPIAMAAIAEgQIgOAAQgKAWgKAOgAATgKIAOgBIgDgEIAIgFIgLABIgDAAgAAgglIAOAAIgIgLgAhRBIIASiPIAQACIgDAzIAJAAIgBARIgKABIgDANIAMgBIAAAQIgOABIgIAtgAgHgsQgDgEAAgFQAAgKAKAAQACAAAEADQAGAEgBAFQAAALgKAAQgEAAgEgEg");
+	this.shape_1.setTransform(245.1,156.3,5.126,5.126);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.MC_par},{t:this.MC_par_you},{t:this.MC_goo_you},{t:this.MC_choki_you},{t:this.MC_goo},{t:this.MC_choki}]},1).to({state:[{t:this.shape_1},{t:this.shape}]},1).wait(1));
 
 	// btn
 	this.instance_4 = new lib.btn_tutorial();
@@ -1961,15 +1983,15 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 	this.btn_goo.setTransform(42.3,331,1.482,1.482,0,0,0,-32.4,0);
 	new cjs.ButtonHelper(this.btn_goo, 0, 1, 1);
 
-	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("#3300FF").ss(1,1,1).p("AgBAAIADAA");
-	this.shape.setTransform(469.7,260.4);
+	this.shape_2 = new cjs.Shape();
+	this.shape_2.graphics.f().s("#3300FF").ss(1,1,1).p("AgBAAIADAA");
+	this.shape_2.setTransform(469.7,260.4);
 
 	this.button_2 = new lib.btn_reStart();
 	this.button_2.setTransform(391.9,316.8,0.66,0.66,0,0,0,160.5,26.2);
 	new cjs.ButtonHelper(this.button_2, 0, 1, 2, false, new lib.btn_reStart(), 3);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.btn_start},{t:this.instance_4}]}).to({state:[{t:this.shape},{t:this.btn_goo},{t:this.btn_par},{t:this.btn_choki}]},1).to({state:[{t:this.button_2}]},1).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.btn_start},{t:this.instance_4}]}).to({state:[{t:this.shape_2},{t:this.btn_goo},{t:this.btn_par},{t:this.btn_choki}]},1).to({state:[{t:this.button_2}]},1).wait(1));
 
 	// starge
 	this.MC_parStart = new lib.MC_par();
