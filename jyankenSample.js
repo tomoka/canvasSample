@@ -1085,8 +1085,8 @@ p.nominalBounds = new cjs.Rectangle(-150,-43,300,86);
 	this.shape_2.setTransform(0.5,-3.9,3.939,3.941);
 
 	this.shape_3 = new cjs.Shape();
-	this.shape_3.graphics.f("#1955A5").s().p("AAABlQgpAAgegdQgegeAAgqQAAgoAegeQAegeApAAIABAAQAqAAAeAeQAdAeAAAoQAAAqgdAeQgeAdgqAAgAgdgcQgMANAAAPQAAARAMAMQAMAMARAAIABAAQARAAAMgMQAMgMAAgRQAAgPgMgNQgMgMgRAAIgBAAQgRAAgMAMg");
-	this.shape_3.setTransform(0.5,0,3.939,3.941);
+	this.shape_3.graphics.f("#1955A5").s().p("AgBGPQimABh2h1Qh2h2AAilQAAikB2h0QB2h2CmAAIAFAAQCmAAB2B2QB0B0AACkQAAClh0B2Qh2B1imgBgAh2hzQgxAxAABCQAABDAxAxQAwAvBFAAIAFAAQBFAAAwgvQAvgvAAhFQAAhCgvgxQgwgvhFAAIgFAAQhFAAgwAvg");
+	this.shape_3.setTransform(0.5,0);
 
 	this.shape_4 = new cjs.Shape();
 	this.shape_4.graphics.f("#1955A5").s().p("AAABHQgdAAgVgVQgVgVAAgdQAAgcAVgVQAVgVAdAAIABAAQAdAAAVAVQAVAVAAAcQAAAdgVAVQgVAVgdAAg");
@@ -1890,7 +1890,7 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 	this.instance.setTransform(280,112,1,1,0,0,0,-1,-194);
 
 	this.instance_1 = new lib.MC_score();
-	this.instance_1.setTransform(184.8,47.4,1,1,0,0,0,66.5,16.2);
+	this.instance_1.setTransform(84.8,47.4,1,1,0,0,0,66.5,16.2);
 
 	this.instance_2 = new lib.MC_result();
 	this.instance_2.setTransform(280.7,69.4,1,1,0,0,0,76,16.2);
@@ -1903,7 +1903,7 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 	this.text_score.textAlign = "center";
 	this.text_score.lineHeight = 42;
 	this.text_score.lineWidth = 126;
-	this.text_score.setTransform(320.2,26);
+	this.text_score.setTransform(220.2,26);
 	this.text_score._off = true;
 
 	this.timeline.addTween(cjs.Tween.get(this.text_score).wait(1).to({_off:false},0).wait(1).to({x:273.5,y:185,lineWidth:547},0).wait(1));
@@ -1961,15 +1961,15 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 	new cjs.ButtonHelper(this.btn_start, 0, 1, 2, false, new lib.btn_start(), 3);
 
 	this.btn_choki = new lib.btn_choki();
-	this.btn_choki.setTransform(441.5,331.7,1.5,1.5);
+	this.btn_choki.setTransform(454.5,331.7,1.5,1.5);
 	new cjs.ButtonHelper(this.btn_choki, 0, 1, 1);
 
 	this.btn_par = new lib.btn_par();
-	this.btn_par.setTransform(259,331,1.482,1.482);
+	this.btn_par.setTransform(278.6,331,1.482,1.482);
 	new cjs.ButtonHelper(this.btn_par, 0, 1, 1);
 
 	this.btn_goo = new lib.シンボル7_1();
-	this.btn_goo.setTransform(42.3,331,1.482,1.482,0,0,0,-32.4,0);
+	this.btn_goo.setTransform(55.3,331,1.482,1.482,0,0,0,-32.4,0);
 	new cjs.ButtonHelper(this.btn_goo, 0, 1, 1);
 
 	this.shape = new cjs.Shape();
@@ -2017,8 +2017,8 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 	this.shape_6.setTransform(130.6,103.9,2.674,2.674);
 
 	this.shape_7 = new cjs.Shape();
-	this.shape_7.graphics.f("#FFFFFF").s().p("A+/EcQieAAghh8IgJAAIAAk0IAGAAQAdiIClABMA9/AAAQClgBAdCIIAGAAIAAE0IgJAAQghB8ieAAg");
-	this.shape_7.setTransform(271,45);
+	this.shape_7.graphics.f("#FFFFFF").s().p("A06EcQieAAghh8IgJAAIAAk0IAGAAQAdiIClABMArKAAAIAAALQBYAcAVBgIAGAAIAAE0IgJAAQgXBWhTAbIAAALg");
+	this.shape_7.setTransform(169.5,45);
 
 	this.shape_8 = new cjs.Shape();
 	this.shape_8.graphics.f("#73400B").s().p("AgGA/IAAgfIg4AAIAAgNIA4AAIAAgIIgaACIgBgJQgLAHgMAFIgGgMQARgEAMgIIAFAJIAKgBIAFgCIgQgQIgHAIQgJgJgNgJIAIgKIAPAMIAKgHIAGAGIALgMIg0AAIAAgMIA2AAIAAgLIANAAIAAALIA2AAIAAAMIg2AAQgHALgKAKIAGAHQALgNAKgMIAMAFQgMAQgRAPIARAAIgGgJIAMgFIAHANIAEgHQARAHAMAFIgGALQgKgHgOgFIAFALIgMADIgDgHIgQAAIAAAJIA4AAIAAANIg4AAIAAAfgAAdgUQAMgIAKgJIAJAJQgKAIgNAJg");
@@ -2030,7 +2030,7 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 
 	this.shape_10 = new cjs.Shape();
 	this.shape_10.graphics.f("#FFFFFF").s().p("A+/K8QjIgBAAjHIAAvmQAAjJDIAAMA9/AAAQDIAAAADJIAAPmQAADHjIABg");
-	this.shape_10.setTransform(285.5,190);
+	this.shape_10.setTransform(285.5,184);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.MC_chokiStart},{t:this.MC_gooStart},{t:this.MC_parStart}]}).to({state:[{t:this.shape_7},{t:this.shape_6},{t:this.shape_5},{t:this.shape_4},{t:this.shape_3},{t:this.shape_2},{t:this.shape_1}]},1).to({state:[{t:this.shape_10},{t:this.shape_9},{t:this.shape_8}]},1).wait(1));
 
