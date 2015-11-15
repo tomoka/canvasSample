@@ -59,6 +59,19 @@ lib.properties = {
 
 
 
+(lib.シンボル10 = function() {
+	this.initialize();
+
+	// レイヤー 1
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f("#000000").s().p("Eg1BAq9MAAAhV6MBqDAAAMAAAA21MgjnAAAIAAM9MAjnAAAIAASIgARbY1IAAs9MAjnAAAIAAM9g");
+	this.shape.setTransform(339.5,275);
+
+	this.addChild(this.shape);
+}).prototype = p = new cjs.Container();
+p.nominalBounds = new cjs.Rectangle(0,0,679,550);
+
+
 (lib.シンボル9 = function(mode,startPosition,loop) {
 	this.initialize(mode,startPosition,loop,{});
 
@@ -656,15 +669,29 @@ p.nominalBounds = new cjs.Rectangle(0,0,413,204);
 	this.initialize();
 
 	// レイヤー 1
-	this.text = new cjs.Text("じゃんけん", "80px 'A-OTF Maru Folk Pro R'", "#CC0033");
-	this.text.textAlign = "center";
-	this.text.lineHeight = 82;
-	this.text.lineWidth = 465;
-	this.text.setTransform(232.5,0);
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f("#FBB500").s().p("AhbBgQAMgpAfhUIAdhKIAWAIIgbBZQAMgFAMAAQAQAAAMAKQAQALAAAZQAAARgEAQQAfgCAVABIAAAaQgHACghABIgxAAQAJgpAAgOQAAgagSAAQgQAAgPAMQgRAwgNAdg");
+	this.shape.setTransform(399.9,42.2,3.954,3.954);
 
-	this.addChild(this.text);
+	this.shape_1 = new cjs.Shape();
+	this.shape_1.graphics.f("#FBB500").s().p("AAHBgQASgrAHg1IABgSQgrADgZgCIAAgYQAWgDAvgCIAAgHIgBgrIAAgGIAZgBIAEAeIABAbIAhgBIAAAZIghACIAAAIQgBAXgJAlQgKAjgMAVgAheA0QgBgVAAgaQAAgqACgdIACggIAaAAIgBBHQAAAwACAiQAPgHANgDIAIAYQgZAOgkAOQgEgUgBgZg");
+	this.shape_1.setTransform(324,44.1,3.954,3.954);
+
+	this.shape_2 = new cjs.Shape();
+	this.shape_2.graphics.f("#FBB500").s().p("AhbBgQAMgpAfhUIAdhKIAWAIIgbBZQAMgFAMAAQAQAAAMAKQAQALAAAZQAAARgEAQQAfgCAVABIAAAaIgoADIgxAAQAJgnAAgQQAAgagSAAQgPAAgQAMIgeBNg");
+	this.shape_2.setTransform(237,42.2,3.954,3.954);
+
+	this.shape_3 = new cjs.Shape();
+	this.shape_3.graphics.f("#FBB500").s().p("AgVAkIgLglIgoATIgKgSQAQgKAcgOIgNg5IAVgFIAQA0QAbgMAWAAQAWAAANALQANALAAASQAAAegmAWIgOgRQAagVAAgMQAAgRgYAAQgRAAgYAKQAQA+AFAeIgTAGQgHgSgIghgAACg0QgCgEAAgHQAAgFABgFQAEgFAIAAQAHAAAFAEQAFAEAAAHQAAAHgFAFQgFAEgGAAQgHAAgFgFg");
+	this.shape_3.setTransform(159.5,50.8,3.954,3.954);
+
+	this.shape_4 = new cjs.Shape();
+	this.shape_4.graphics.f("#FBB500").s().p("Ag+BJQgNgVAAgrQAAgpAMhEIAbABQgGBJAAAfQAAAeAFANQAIAWAXAAQAQAAATgNQAKgHASgTIATARQgSAZgSAMQgXAQgZAAQgkAAgSgcgAAjgnQgEgFAAgGQAAgEADgEQAEgFAHAAQAGAAAEAFQAFAEAAAGQAAAFgEAEQgEAFgGAAQgHAAgEgFgAAJhCQgEgGAAgFQAAgFADgEQAEgFAHAAQAGAAAFAFQAFAFAAAFQAAAGgFAFQgFAEgFAAQgGAAgFgFg");
+	this.shape_4.setTransform(81.9,42.5,3.954,3.954);
+
+	this.addChild(this.shape_4,this.shape_3,this.shape_2,this.shape_1,this.shape);
 }).prototype = p = new cjs.Container();
-p.nominalBounds = new cjs.Rectangle(0,0,469,86.2);
+p.nominalBounds = new cjs.Rectangle(51.6,0.9,385,84.6);
 
 
 (lib.drow = function() {
@@ -1204,11 +1231,28 @@ p.nominalBounds = new cjs.Rectangle(-150,-43,300,86);
 p.nominalBounds = new cjs.Rectangle(-40,-40,81,80);
 
 
+(lib.シンボル11 = function() {
+	this.initialize();
+
+	// レイヤー 1
+	this.instance = new lib.シンボル10();
+	this.instance.setTransform(339.4,275,1,1,0,0,0,339.4,275);
+	this.instance.alpha = 0.5;
+
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f().s("#000000").ss(1,1,1).p("Eg1Bgq9MBqDAAAMAAABV7MhqDAAAg");
+	this.shape.setTransform(339.5,275);
+
+	this.addChild(this.shape,this.instance);
+}).prototype = p = new cjs.Container();
+p.nominalBounds = new cjs.Rectangle(-1,-1,681,552);
+
+
 (lib.シンボル5 = function(mode,startPosition,loop) {
 	this.initialize(mode,startPosition,loop,{});
 
 	// timeline functions:
-	this.frame_9 = function() {
+	this.frame_30 = function() {
 		var that = this;
 		
 		this.stop();
@@ -1218,16 +1262,22 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,81,80);
 	}
 
 	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).wait(9).call(this.frame_9).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this).wait(30).call(this.frame_30).wait(1));
 
 	// レイヤー 1
 	this.instance = new lib.janken();
 	this.instance.setTransform(234.5,43.1,1,1,0,0,0,234.5,43.1);
 
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1).to({scaleX:1.05,scaleY:1.05},0).wait(1).to({scaleX:1.09,scaleY:1.09,x:234.6},0).wait(1).to({scaleX:1.14,scaleY:1.14,y:43.2},0).wait(1).to({scaleX:1.18,scaleY:1.18,x:234.5},0).wait(1).to({scaleX:1.23,scaleY:1.23,x:234.6,y:43.1},0).wait(1).to({scaleX:1.27,scaleY:1.27},0).wait(1).to({scaleX:1.32,scaleY:1.32,x:234.5},0).wait(1).to({scaleX:1.36,scaleY:1.36,x:234.6,y:43.2,alpha:0.5},0).wait(1).to({scaleX:1.41,scaleY:1.41,alpha:0},0).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1).to({regX:244.1,regY:43.2,scaleX:1.02,scaleY:1.02,x:244.3,y:43.2},0).wait(1).to({scaleX:1.03,scaleY:1.03,x:244.5,y:43.3},0).wait(1).to({scaleX:1.05,scaleY:1.05,x:244.7},0).wait(1).to({scaleX:1.07,scaleY:1.07,x:244.8},0).wait(1).to({scaleX:1.09,scaleY:1.09,x:245,y:43.2},0).wait(1).to({scaleX:1.11,scaleY:1.11,x:245.2,y:43.3},0).wait(1).to({scaleX:1.12,scaleY:1.12,x:245.4},0).wait(1).to({scaleX:1.14,scaleY:1.14,x:245.5},0).wait(1).to({scaleX:1.16,scaleY:1.16,x:245.7},0).wait(1).to({scaleX:1.18,scaleY:1.18,x:245.9},0).wait(1).to({scaleX:1.2,scaleY:1.2,x:246},0).wait(1).to({scaleX:1.21,scaleY:1.21,x:246.2},0).wait(1).to({scaleX:1.23,scaleY:1.23,x:246.4},0).wait(1).to({scaleX:1.25,scaleY:1.25,x:246.5},0).wait(1).to({scaleX:1.26,scaleY:1.26,x:246.7},0).wait(1).to({scaleX:1.28,scaleY:1.28,x:246.9},0).wait(1).to({scaleX:1.3,scaleY:1.3,x:247},0).wait(1).to({scaleX:1.32,scaleY:1.32,x:247.2},0).wait(1).to({scaleX:1.33,scaleY:1.33,x:247.3,alpha:0.833},0).wait(1).to({scaleX:1.35,scaleY:1.35,x:247.5,alpha:0.667},0).wait(1).to({scaleX:1.36,scaleY:1.36,x:247.7,alpha:0.5},0).wait(1).to({scaleX:1.38,scaleY:1.38,x:247.8,alpha:0.333},0).wait(1).to({scaleX:1.39,scaleY:1.39,x:248,alpha:0.167},0).wait(1).to({scaleX:1.41,scaleY:1.41,x:248.1,alpha:0},0).to({_off:true},1).wait(6));
+
+	// レイヤー 3
+	this.instance_1 = new lib.シンボル11();
+	this.instance_1.setTransform(186.4,-17.8,1,1,0,0,0,339.4,275);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(1).to({regX:339.5,x:186.5,alpha:0.967},0).wait(1).to({alpha:0.933},0).wait(1).to({alpha:0.9},0).wait(1).to({alpha:0.867},0).wait(1).to({alpha:0.833},0).wait(1).to({alpha:0.8},0).wait(1).to({alpha:0.767},0).wait(1).to({alpha:0.733},0).wait(1).to({alpha:0.7},0).wait(1).to({alpha:0.667},0).wait(1).to({alpha:0.633},0).wait(1).to({alpha:0.6},0).wait(1).to({alpha:0.567},0).wait(1).to({alpha:0.533},0).wait(1).to({alpha:0.5},0).wait(1).to({alpha:0.467},0).wait(1).to({alpha:0.433},0).wait(1).to({alpha:0.4},0).wait(1).to({alpha:0.367},0).wait(1).to({alpha:0.333},0).wait(1).to({alpha:0.3},0).wait(1).to({alpha:0.267},0).wait(1).to({alpha:0.233},0).wait(1).to({alpha:0.2},0).wait(1).to({alpha:0.167},0).wait(1).to({alpha:0.133},0).wait(1).to({alpha:0.1},0).wait(1).to({alpha:0.067},0).wait(1).to({alpha:0.033},0).wait(1).to({alpha:0},0).wait(1));
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(0,0,469,86.2);
+p.nominalBounds = new cjs.Rectangle(-153.5,-293.3,680,551);
 
 
 (lib.MC_win = function(mode,startPosition,loop) {
@@ -1256,18 +1306,18 @@ p.nominalBounds = new cjs.Rectangle(-205,-100,410,204);
 	this.initialize(mode,startPosition,loop,{});
 
 	// timeline functions:
-	this.frame_23 = function() {
+	this.frame_51 = function() {
 		this.stop();
 	}
 
 	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).wait(23).call(this.frame_23).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this).wait(51).call(this.frame_51).wait(1));
 
 	// レイヤー 1
 	this.instance = new lib.シンボル7();
 	this.instance.setTransform(0.2,-366.9,1,1,0,0,0,209.8,47.7);
 
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1).to({scaleX:0.96,scaleY:0.98,x:0.4,y:-351.1},0).wait(1).to({scaleX:0.92,scaleY:0.96,x:0.5,y:-335.2},0).wait(1).to({scaleX:0.89,scaleY:0.94,x:0.7,y:-319.4},0).wait(1).to({scaleX:0.85,scaleY:0.92,x:1.6,y:-261.9},0).wait(1).to({scaleX:0.82,scaleY:0.9,x:2.4,y:-204.4},0).wait(1).to({scaleX:0.79,scaleY:0.87,x:3.2,y:-146.9},0).wait(1).to({scaleX:0.76,scaleY:0.85,x:1.7,y:-171.4},0).wait(1).to({scaleX:0.76,scaleY:0.83,x:0.2,y:-195.9},0).wait(1).to({scaleX:0.77,scaleY:0.81},0).wait(1).to({scaleX:0.78,scaleY:0.79},0).wait(1).to({scaleX:0.77,scaleY:0.77},0).wait(1).to({scaleX:0.76,scaleY:0.75},0).wait(1).to({scaleX:0.75,scaleY:0.81},0).wait(1).to({scaleX:0.76,scaleY:0.88},0).wait(1).to({scaleX:0.77,scaleY:0.95},0).wait(1).to({scaleX:0.78,scaleY:1.01},0).wait(1).to({scaleX:0.78,scaleY:1.08},0).wait(1).to({scaleX:0.78,scaleY:1.14},0).wait(1).to({scaleX:0.76,scaleY:1.21},0).wait(1).to({scaleX:0.8,scaleY:1.16},0).wait(1).to({scaleX:0.94,scaleY:1.1},0).wait(1).to({scaleX:1.14,scaleY:1.05},0).wait(1).to({scaleX:1,scaleY:1},0).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1).to({scaleX:0.99,scaleY:0.99,y:-360.1},0).wait(1).to({scaleX:0.97,scaleY:0.98,x:0.3,y:-353.3},0).wait(1).to({scaleX:0.95,scaleY:0.97,x:0.4,y:-346.6},0).wait(1).to({scaleX:0.93,scaleY:0.95,x:0.5,y:-339.8},0).wait(1).to({scaleX:0.91,scaleY:0.94,x:0.6,y:-333},0).wait(1).to({scaleX:0.9,scaleY:0.93,y:-326.2},0).wait(1).to({scaleX:0.88,scaleY:0.92,x:0.7,y:-319.4},0).wait(1).to({scaleX:0.85,scaleY:0.91,x:1.1,y:-290.6},0).wait(1).to({scaleX:0.83,scaleY:0.9,x:1.5,y:-261.9},0).wait(1).to({scaleX:0.81,scaleY:0.89,x:1.9,y:-233.1},0).wait(1).to({scaleX:0.79,scaleY:0.87,x:2.4,y:-204.4},0).wait(1).to({scaleX:0.77,scaleY:0.86,x:2.8,y:-175.7},0).wait(1).to({scaleX:0.76,scaleY:0.85,x:3.2,y:-146.9},0).wait(1).to({scaleX:0.87,scaleY:0.84,x:2.6,y:-156.7},0).wait(1).to({scaleX:0.96,scaleY:0.83,x:2,y:-166.5},0).wait(1).to({scaleX:1.04,scaleY:0.82,x:1.4,y:-176.3},0).wait(1).to({scaleX:1.09,scaleY:0.81,x:0.8,y:-186.1},0).wait(1).to({scaleX:1.13,scaleY:0.79,x:0.2,y:-195.9},0).wait(1).to({scaleX:1.15,scaleY:0.78},0).wait(1).to({scaleX:1.17,scaleY:0.77},0).wait(1).to({scaleX:1.18,scaleY:0.76},0).wait(1).to({scaleX:1.18,scaleY:0.75},0).wait(1).to({scaleX:1.18,scaleY:0.83},0).wait(1).to({scaleX:1.17,scaleY:0.9},0).wait(1).to({scaleX:1.16,scaleY:0.98},0).wait(1).to({scaleX:1.14,scaleY:1.05},0).wait(1).to({scaleX:1.12,scaleY:1.13},0).wait(1).to({scaleX:1.09,scaleY:1.21},0).wait(1).to({scaleX:1.06,scaleY:1.2},0).wait(1).to({scaleX:1.03,scaleY:1.19},0).wait(1).to({scaleX:1,scaleY:1.18},0).wait(1).to({scaleX:0.97,scaleY:1.17},0).wait(1).to({scaleX:0.94,scaleY:1.16},0).wait(1).to({scaleX:0.92,scaleY:1.15},0).wait(1).to({scaleX:0.89,scaleY:1.14},0).wait(1).to({scaleX:0.87,scaleY:1.14},0).wait(1).to({scaleX:0.86,scaleY:1.13},0).wait(1).to({scaleX:0.86,scaleY:1.12},0).wait(1).to({scaleX:0.87,scaleY:1.11},0).wait(1).to({scaleX:0.9,scaleY:1.1},0).wait(1).to({scaleX:0.94,scaleY:1.09},0).wait(1).to({scaleX:1.01,scaleY:1.08},0).wait(1).to({scaleX:1.11,scaleY:1.07},0).wait(1).to({scaleX:1.2,scaleY:1.06},0).wait(1).to({scaleX:1.18,scaleY:1.05},0).wait(1).to({scaleX:1.16,scaleY:1.05},0).wait(1).to({scaleX:1.14,scaleY:1.04},0).wait(1).to({scaleX:1.12,scaleY:1.03},0).wait(1).to({scaleX:1.08,scaleY:1.02},0).wait(1).to({scaleX:1.04,scaleY:1.01},0).wait(1).to({scaleX:1,scaleY:1},0).wait(1));
 
 }).prototype = p = new cjs.MovieClip();
 p.nominalBounds = new cjs.Rectangle(-209.6,-414.6,419.7,95.4);
@@ -1598,9 +1648,10 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 				that.MC_chokiStart.y = -200;
 				that.MC_chokiStart.x = Math.random() * 550;
 			}
+			console.log("MC_itemMove");
 		}
 		
-		setInterval(MC_itemMove, 10);
+		MC_itemMoveTimer = setInterval(MC_itemMove, 10);
 	}
 	this.frame_1 = function() {
 		/* 
@@ -1616,9 +1667,8 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 		lostCount = 0;
 		attackCount = 0;
 		
-		this.MC_goo.visible = false;
-		this.MC_par.visible = false;
-		this.MC_choki.visible = false;
+		var slote = 0;
+		
 		this.MC_goo_you.visible = false;
 		this.MC_par_you.visible = false;
 		this.MC_choki_you.visible = false;
@@ -1630,13 +1680,42 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 		that.MC_addScore.MC_addScore_tween.text_addScore.text = "";
 		gameOnFlag = 0;
 		
+		clearInterval(MC_itemMoveTimer);
+		
 		/*
 		ぐー = 0;
 		ちょき = 1;
 		ぱー = 2;
 		*/
 		
-		//this.text_score.text = 100;
+		function sloteEvent() {
+			//ランダムで出すよりも順番に出した方がスムーズで良さそう。
+			//slote = Math.floor(Math.random() * 3);
+			slote++;
+			if(slote == 3){slote = 0;}
+			switch (slote) {
+				case 0:
+					that.MC_goo.visible = true;
+					that.MC_par.visible = false;
+					that.MC_choki.visible = false;
+					break;
+				case 1:
+					that.MC_goo.visible = false;
+					that.MC_par.visible = false;
+					that.MC_choki.visible = true;
+					break;
+				case 2:
+					that.MC_goo.visible = false;
+					that.MC_par.visible = true;
+					that.MC_choki.visible = false;
+					break;
+				default:
+					break;
+			}
+			console.log("sloteEvent");
+		}
+		//スロットな感じを表現
+		sloteEventTimer = setInterval(sloteEvent, 100);
 		
 		function jankenEvent(you) {
 			if (you == 0) {
@@ -1654,6 +1733,7 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 			}
 		
 			kekka = Math.floor(Math.random() * 3);
+			clearInterval(sloteEventTimer);
 		
 			switch (kekka) {
 				case 0:
