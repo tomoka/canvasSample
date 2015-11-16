@@ -1,0 +1,41 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="MC_titile" itemID="5640c4ef-00000133" lastModified="1447550546">
+  <persistentData>
+    <PD n="CreateJSToolkit_timelinedata" v="version&#xA;0.1&#xA;loop&#xA;true"/>
+  </persistentData>
+  <timeline>
+    <DOMTimeline name="MC_titile">
+      <layers>
+        <DOMLayer name="レイヤー 2" color="#9933CC">
+          <frames>
+            <DOMFrame index="0" duration="51" keyMode="9728">
+              <elements/>
+            </DOMFrame>
+            <DOMFrame index="51" keyMode="9728">
+              <Framescript language="JavaScript">
+                <script><![CDATA[this.stop();]]></script>
+              </Framescript>
+              <elements/>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="レイヤー 1" color="#0000FF" current="true" isSelected="true" autoNamed="false" animationType="motion object">
+          <frames>
+            <DOMFrame index="0" duration="52" tweenType="motion object" motionTweenRotate="none" motionTweenScale="false" isMotionObject="true" visibleAnimationKeyframes="2097151" keyMode="8195">
+              <motionObjectXML><AnimationCore TimeScale="24000" Version="1" duration="52000"><TimeMap strength="0" type="Quadratic"/><TimeMap strength="0" type="Custom"><CustomTimeMapPoint anchor="0,0" next="0.0188,0.0188" previous="0,0"/><CustomTimeMapPoint anchor="0.117647,0.1809" next="0.178547,0.2777" previous="0.0971471,0.1482"/><CustomTimeMapPoint anchor="0.352941,0.5293" next="0.575141,0.6034" previous="0.257141,0.4974"/><CustomTimeMapPoint anchor="0.862745,0.5599" next="0.963245,0.772" previous="0.746945,0.316"/><CustomTimeMapPoint anchor="1,1" next="1,1" previous="0.9563,0.8"/></TimeMap><metadata><names><name langID="ja_JP" value=""/></names><Settings orientToPath="0" xformPtXOffsetPct="0.490225" xformPtYOffsetPct="0.381964" xformPtZOffsetPixels="0"/></metadata><PropertyContainer id="headContainer"><PropertyContainer id="Basic_Motion"><Property enabled="1" id="Motion_X" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0"/><Keyframe anchor="0,0.5" next="0,0.5" previous="0,0.5" roving="0" timevalue="7000"/><Keyframe anchor="0,3" next="0,3" previous="0,3" roving="0" timevalue="13000"/><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="18000"/></Property><Property enabled="1" id="Motion_Y" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0"/><Keyframe anchor="0,47.5" next="0,47.5" previous="0,47.5" roving="0" timevalue="7000"/><Keyframe anchor="0,220" next="0,220" previous="0,220" roving="0" timevalue="13000"/><Keyframe anchor="0,171" next="0,171" previous="0,171" roving="0" timevalue="18000"/></Property><Property enabled="1" id="Rotation_Z" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0"/></Property></PropertyContainer><PropertyContainer id="Transformation"><Property enabled="1" id="Skew_X" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0"/></Property><Property enabled="1" id="Skew_Y" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,0" next="0,0" previous="0,0" roving="0" timevalue="0"/></Property><Property TimeMapIndex="1" enabled="1" id="Scale_X" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,100" next="0,100" previous="0,100" roving="0" timevalue="0"/><Keyframe anchor="0,74.8428" next="0,74.8428" previous="0,74.8428" roving="0" timevalue="22000"/><Keyframe anchor="0,120.682" next="0,120.682" previous="0,120.682" roving="0" timevalue="28000"/><Keyframe anchor="0,100" next="0,100" previous="0,100" roving="0" timevalue="51000"/></Property><Property enabled="1" id="Scale_Y" ignoreTimeMap="0" readonly="0" visible="1"><Keyframe anchor="0,100" next="0,100" previous="0,100" roving="0" timevalue="0"/><Keyframe anchor="0,74.8428" next="0,74.8428" previous="0,74.8428" roving="0" timevalue="22000"/><Keyframe anchor="0,120.682" next="0,120.682" previous="0,120.682" roving="0" timevalue="28000"/><Keyframe anchor="0,100" next="0,100" previous="0,100" roving="0" timevalue="51000"/></Property></PropertyContainer><PropertyContainer id="Colors"/><PropertyContainer id="Filters"/></PropertyContainer></AnimationCore></motionObjectXML>
+              <elements>
+                <DOMSymbolInstance libraryItemName="シンボル 7" selected="true">
+                  <matrix>
+                    <Matrix tx="-209.65" ty="-414.65"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="209.85" y="47.7"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>
