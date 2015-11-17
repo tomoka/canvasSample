@@ -1382,9 +1382,13 @@ p.nominalBounds = new cjs.Rectangle(-154.2,-118.6,691.3,178.2);
 	this.frame_0 = function() {
 		this.stop();
 	}
+	this.frame_23 = function() {
+		gameOnFlag = 1;
+		console.log("gameOnFlag-------->" + gameOnFlag);
+	}
 
 	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(24));
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(23).call(this.frame_23).wait(1));
 
 	// レイヤー 1
 	this.instance = new lib.win();
@@ -1447,9 +1451,13 @@ p.nominalBounds = new cjs.Rectangle(-43,-23,85,44);
 	this.frame_0 = function() {
 		this.stop();
 	}
+	this.frame_23 = function() {
+		gameOnFlag = 1;
+		console.log("gameOnFlag-------->" + gameOnFlag);
+	}
 
 	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(24));
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(23).call(this.frame_23).wait(1));
 
 	// レイヤー 1
 	this.instance = new lib.lost();
@@ -1469,9 +1477,13 @@ p.nominalBounds = new cjs.Rectangle(-148.3,-65.9,285,134.1);
 	this.frame_0 = function() {
 		this.stop();
 	}
+	this.frame_23 = function() {
+		gameOnFlag = 1;
+		console.log("gameOnFlag-------->" + gameOnFlag);
+	}
 
 	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(24));
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(23).call(this.frame_23).wait(1));
 
 	// レイヤー 1
 	this.instance = new lib.drow();
@@ -2071,27 +2083,33 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 		
 		this.btn_goo.addEventListener("click", fl_MouseClickHandler_10.bind(this));
 		function fl_MouseClickHandler_10() {
+			console.log("gameOnFlag-------->" + gameOnFlag);
 			if (gameOnFlag == 1) {
 				you = 0;
 				jankenEvent(you);
+				gameOnFlag = 0;
 			}
 		}
 		
 		
 		this.btn_choki.addEventListener("click", fl_MouseClickHandler_11.bind(this));
 		function fl_MouseClickHandler_11() {
+			console.log("gameOnFlag-------->" + gameOnFlag);
 			if (gameOnFlag == 1) {
 				you = 1;
 				jankenEvent(you);
+				gameOnFlag = 0;
 			}
 		}
 		
 		
 		this.btn_par.addEventListener("click", fl_MouseClickHandler_12.bind(this));
 		function fl_MouseClickHandler_12() {
+			console.log("gameOnFlag-------->" + gameOnFlag);
 			if (gameOnFlag == 1) {
 				you = 2;
 				jankenEvent(you);
+				gameOnFlag = 0;
 			}
 		}
 		console.log("gameOnFlag-------->" + gameOnFlag);
@@ -2226,10 +2244,10 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 	this.MC_par = new lib.MC_par();
 	this.MC_par.setTransform(154.5,186,0.693,0.693,0,0,0,150,150);
 
-	this.text = new cjs.Text("ページ下の３っつのボタンを押すと自分が出す手を\n選択できます。COMと対戦します。\nじゃんけんする度に得点が加算減算されます。\n　かち：２点\n　まけ：−１点\n　あいこ：１点\n１１点以上取ると終了です。\nリザルトは対戦回数からじゃんけんした勝率を\n計算して結果を返します。", "18px 'A-OTF Maru Folk Pro R'", "#333333");
+	this.text = new cjs.Text("ページ下の３っつのボタンを押すと自分が出す手を\n選択できます。COMと対戦します。\nじゃんけんする度に得点が加算減算されます。\n　かち：２点\n　まけ：−１点\n　あいこ：１点\n１１点以上取ると終了です。リザルト結果は対戦\n回数からじゃんけんの勝率を返します。", "18px 'A-OTF Maru Folk Pro R'", "#333333");
 	this.text.lineHeight = 20;
-	this.text.lineWidth = 454;
-	this.text.setTransform(53,124);
+	this.text.lineWidth = 446;
+	this.text.setTransform(59,131);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.MC_par},{t:this.MC_par_you},{t:this.MC_goo_you},{t:this.MC_choki_you},{t:this.MC_goo},{t:this.MC_choki}]},1).to({state:[]},1).to({state:[{t:this.text}]},1).wait(1));
 
