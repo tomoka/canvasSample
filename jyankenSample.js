@@ -1383,7 +1383,7 @@ p.nominalBounds = new cjs.Rectangle(-154.2,-118.6,691.3,178.2);
 		this.stop();
 	}
 	this.frame_23 = function() {
-		gameOnFlag = 1;
+		//gameOnFlag = 1;
 		console.log("gameOnFlag-------->" + gameOnFlag);
 	}
 
@@ -1452,7 +1452,7 @@ p.nominalBounds = new cjs.Rectangle(-43,-23,85,44);
 		this.stop();
 	}
 	this.frame_23 = function() {
-		gameOnFlag = 1;
+		//gameOnFlag = 1;
 		console.log("gameOnFlag-------->" + gameOnFlag);
 	}
 
@@ -1478,7 +1478,7 @@ p.nominalBounds = new cjs.Rectangle(-148.3,-65.9,285,134.1);
 		this.stop();
 	}
 	this.frame_23 = function() {
-		gameOnFlag = 1;
+		//gameOnFlag = 1;
 		console.log("gameOnFlag-------->" + gameOnFlag);
 	}
 
@@ -1869,7 +1869,9 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 			//ランダムで出すよりも順番に出した方がスムーズで良さそう。
 			//slote = Math.floor(Math.random() * 3);
 			slote++;
-			if(slote == 3){slote = 0;}
+			if (slote == 3) {
+				slote = 0;
+			}
 			switch (slote) {
 				case 0:
 					that.MC_goo.visible = true;
@@ -1927,8 +1929,8 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						that.MC_win.visible = false;
 						that.MC_drow.visible = true;
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "+1";
-						that.MC_addScore.play();
-						that.MC_drow.play();
+						that.MC_addScore.gotoAndPlay(1);
+						that.MC_drow.gotoAndPlay(1);
 						attackCount++;
 					} else if (you == 1) {
 						count_score--;
@@ -1936,8 +1938,8 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						that.MC_drow.visible = false;
 						that.MC_lost.visible = true;
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "-1";
-						that.MC_addScore.play();
-						that.MC_lost.play();
+						that.MC_addScore.gotoAndPlay(1);
+						that.MC_lost.gotoAndPlay(1);
 						attackCount++;
 						lostCount++;
 					} else {
@@ -1946,8 +1948,8 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						that.MC_drow.visible = false;
 						that.MC_win.visible = true;
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "+2";
-						that.MC_addScore.play();
-						that.MC_win.play();
+						that.MC_addScore.gotoAndPlay(1);
+						that.MC_win.gotoAndPlay(1);
 						winCount++;
 						attackCount++;
 					}
@@ -1978,8 +1980,8 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						that.MC_drow.visible = false;
 						that.MC_win.visible = true;
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "+2";
-						that.MC_addScore.play();
-						that.MC_win.play();
+						that.MC_addScore.gotoAndPlay(1);
+						that.MC_win.gotoAndPlay(1);
 						winCount++;
 						attackCount++;
 					} else if (you == 1) {
@@ -1988,8 +1990,8 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						that.MC_win.visible = false;
 						that.MC_drow.visible = true;
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "+1";
-						that.MC_addScore.play();
-						that.MC_drow.play();
+						that.MC_addScore.gotoAndPlay(1);
+						that.MC_drow.gotoAndPlay(1);
 						attackCount++;
 					} else {
 						count_score--;
@@ -1997,8 +1999,8 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						that.MC_drow.visible = false;
 						that.MC_lost.visible = true;
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "-1";
-						that.MC_addScore.play();
-						that.MC_lost.play();
+						that.MC_addScore.gotoAndPlay(1);
+						that.MC_lost.gotoAndPlay(1);
 						lostCount++;
 						attackCount++;
 					}
@@ -2027,8 +2029,8 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						that.MC_drow.visible = false;
 						that.MC_lost.visible = true;
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "-1";
-						that.MC_addScore.play();
-						that.MC_lost.play();
+						that.MC_addScore.gotoAndPlay(1);
+						that.MC_lost.gotoAndPlay(1);
 						lostCount++;
 						attackCount++;
 					} else if (you == 1) {
@@ -2037,8 +2039,8 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						that.MC_drow.visible = false;
 						that.MC_win.visible = true;
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "+2";
-						that.MC_addScore.play();
-						that.MC_win.play();
+						that.MC_addScore.gotoAndPlay(1);
+						that.MC_win.gotoAndPlay(1);
 						winCount++;
 						attackCount++;
 					} else {
@@ -2047,8 +2049,8 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						that.MC_win.visible = false;
 						that.MC_drow.visible = true;
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "+1";
-						that.MC_addScore.play();
-						that.MC_drow.play();
+						that.MC_addScore.gotoAndPlay(1);
+						that.MC_drow.gotoAndPlay(1);
 						attackCount++;
 					}
 					that.text_score.text = count_score + "点　(" + attackCount + "回戦目)";
@@ -2087,7 +2089,7 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 			if (gameOnFlag == 1) {
 				you = 0;
 				jankenEvent(you);
-				gameOnFlag = 0;
+				//gameOnFlag = 0;
 			}
 		}
 		
@@ -2098,7 +2100,7 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 			if (gameOnFlag == 1) {
 				you = 1;
 				jankenEvent(you);
-				gameOnFlag = 0;
+				//gameOnFlag = 0;
 			}
 		}
 		
@@ -2109,7 +2111,7 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 			if (gameOnFlag == 1) {
 				you = 2;
 				jankenEvent(you);
-				gameOnFlag = 0;
+				//gameOnFlag = 0;
 			}
 		}
 		console.log("gameOnFlag-------->" + gameOnFlag);
