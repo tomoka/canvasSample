@@ -1855,7 +1855,7 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 		this.MC_startIMG.visible = true;
 		
 		that.MC_addScore.MC_addScore_tween.text_addScore.text = "";
-		that.text_score.text = "0点　(0回戦目)";
+		that.text_score.text = "0勝目　(0回戦目)";
 		gameOnFlag = 0;
 		
 		
@@ -1954,10 +1954,10 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						attackCount++;
 					}
 		
-					that.text_score.text = count_score + "点　(" + attackCount + "回戦目)";
+					that.text_score.text = winCount + "勝目　(" + attackCount + "回戦目)";
 					console.log("count_score---->　" + count_score);
 					console.log("that.text_score.text---->　" + that.text_score.text);
-					if (count_score > 10) {
+					if (winCount >= 10) {
 						console.log("that.text_score.text--enddddd-->　" + that.text_score.text);
 						console.log("--------case0---------------");
 						//後で消す場合
@@ -2004,10 +2004,10 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						lostCount++;
 						attackCount++;
 					}
-					that.text_score.text = count_score + "点　(" + attackCount + "回戦目)";
+					that.text_score.text = winCount + "勝目　(" + attackCount + "回戦目)";
 					console.log("count_score---->　" + count_score);
 					console.log("that.text_score.text---->　" + that.text_score.text);
-					if (that.count_score > 10) {
+					if (winCount >= 10) {
 						console.log("that.text_score.text--enddddd-->　" + that.text_score.text);
 						console.log("-----------case1------------");
 						//後で消す場合
@@ -2053,10 +2053,10 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						that.MC_drow.gotoAndPlay(1);
 						attackCount++;
 					}
-					that.text_score.text = count_score + "点　(" + attackCount + "回戦目)";
+					that.text_score.text = winCount + "勝目　(" + attackCount + "回戦目)";
 					console.log("count_score---->　" + count_score);
 					console.log("that.text_score.text---->　" + that.text_score.text);
-					if (that.count_score > 10) {
+					if (winCount >= 10) {
 						console.log("that.text_score.text--enddddd-->　" + that.text_score.text);
 						console.log("------case2-----------------");
 						//後で消す場合
@@ -2070,7 +2070,7 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 					console.log("count_score--3-->　" + count_score);
 					console.log("count_score---->　" + count_score);
 					console.log("that.text_score.text---->　" + that.text_score.text);
-					if (that.text_score.text > 10) {
+					if (winCount >= 10) {
 						console.log("that.text_score.text--enddddd-->　" + that.text_score.text);
 						console.log("--------default---------------");
 						//後で消す場合
