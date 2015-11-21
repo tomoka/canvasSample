@@ -1858,7 +1858,6 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 		that.text_score.text = "0勝目　(0回戦目)";
 		gameOnFlag = 0;
 		
-		
 		/*
 		ぐー = 0;
 		ちょき = 1;
@@ -1872,21 +1871,19 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 			if (slote == 3) {
 				slote = 0;
 			}
+			that.MC_goo.visible = false;
+			that.MC_par.visible = false;
+			that.MC_choki.visible = false;
+			
 			switch (slote) {
 				case 0:
 					that.MC_goo.visible = true;
-					that.MC_par.visible = false;
-					that.MC_choki.visible = false;
 					break;
 				case 1:
-					that.MC_goo.visible = false;
-					that.MC_par.visible = false;
 					that.MC_choki.visible = true;
 					break;
 				case 2:
-					that.MC_goo.visible = false;
 					that.MC_par.visible = true;
-					that.MC_choki.visible = false;
 					break;
 				default:
 					break;
@@ -1897,18 +1894,28 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 		sloteEventTimer = setInterval(sloteEvent, 100);
 		
 		function jankenEvent(you) {
-			if (you == 0) {
-				that.MC_goo_you.visible = true;
-				that.MC_par_you.visible = false;
-				that.MC_choki_you.visible = false;
-			} else if (you == 1) {
-				that.MC_goo_you.visible = false;
-				that.MC_par_you.visible = false;
-				that.MC_choki_you.visible = true;
-			} else {
-				that.MC_goo_you.visible = false;
-				that.MC_par_you.visible = true;
-				that.MC_choki_you.visible = false;
+			// じぶんの手
+			that.MC_par_you.visible = false;
+			that.MC_choki_you.visible = false;
+			that.MC_goo_you.visible = false;
+		
+			// comの手
+			that.MC_par.visible = false;
+			that.MC_choki.visible = false;
+			that.MC_goo.visible = false;
+		
+			switch (you) {
+				case 0:
+					that.MC_goo_you.visible = true;
+					break;
+				case 1:
+					that.MC_choki_you.visible = true;
+					break;
+				case 2:
+					that.MC_par_you.visible = true;
+					break;
+				default:
+					break;
 			}
 		
 			kekka = Math.floor(Math.random() * 3);
@@ -1917,16 +1924,11 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 		
 			switch (kekka) {
 				case 0:
-					kekka_text = "ぐー";
 					that.MC_goo.visible = true;
-					that.MC_par.visible = false;
-					that.MC_choki.visible = false;
 					console.log("count_score--0-->　" + count_score);
 		
 					if (you == 0) {
 						count_score++;
-						that.MC_lost.visible = false;
-						that.MC_win.visible = false;
 						that.MC_drow.visible = true;
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "+1";
 						that.MC_addScore.gotoAndPlay(1);
@@ -1934,8 +1936,6 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						attackCount++;
 					} else if (you == 1) {
 						count_score--;
-						that.MC_win.visible = false;
-						that.MC_drow.visible = false;
 						that.MC_lost.visible = true;
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "-1";
 						that.MC_addScore.gotoAndPlay(1);
@@ -1944,8 +1944,6 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						lostCount++;
 					} else {
 						count_score = count_score + 2;
-						that.MC_lost.visible = false;
-						that.MC_drow.visible = false;
 						that.MC_win.visible = true;
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "+2";
 						that.MC_addScore.gotoAndPlay(1);
@@ -1968,16 +1966,11 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 					}
 					break;
 				case 1:
-					kekka_text = "ちょき";
-					that.MC_goo.visible = false;
-					that.MC_par.visible = false;
 					that.MC_choki.visible = true;
 					console.log("count_score--1-->　" + count_score);
 		
 					if (you == 0) {
 						count_score = count_score + 2;
-						that.MC_lost.visible = false;
-						that.MC_drow.visible = false;
 						that.MC_win.visible = true;
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "+2";
 						that.MC_addScore.gotoAndPlay(1);
@@ -1986,8 +1979,6 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						attackCount++;
 					} else if (you == 1) {
 						count_score++;
-						that.MC_lost.visible = false;
-						that.MC_win.visible = false;
 						that.MC_drow.visible = true;
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "+1";
 						that.MC_addScore.gotoAndPlay(1);
@@ -1995,8 +1986,6 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						attackCount++;
 					} else {
 						count_score--;
-						that.MC_win.visible = false;
-						that.MC_drow.visible = false;
 						that.MC_lost.visible = true;
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "-1";
 						that.MC_addScore.gotoAndPlay(1);
@@ -2018,15 +2007,10 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 					}
 					break;
 				case 2:
-					kekka_text = "ぱー";
-					that.MC_goo.visible = false;
 					that.MC_par.visible = true;
-					that.MC_choki.visible = false;
 					console.log("count_score--2-->　" + count_score);
 					if (you == 0) {
 						count_score--;
-						that.MC_win.visible = false;
-						that.MC_drow.visible = false;
 						that.MC_lost.visible = true;
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "-1";
 						that.MC_addScore.gotoAndPlay(1);
@@ -2035,8 +2019,6 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						attackCount++;
 					} else if (you == 1) {
 						count_score = count_score + 2;
-						that.MC_lost.visible = false;
-						that.MC_drow.visible = false;
 						that.MC_win.visible = true;
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "+2";
 						that.MC_addScore.gotoAndPlay(1);
@@ -2045,8 +2027,6 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 						attackCount++;
 					} else {
 						count_score++;
-						that.MC_lost.visible = false;
-						that.MC_win.visible = false;
 						that.MC_drow.visible = true;
 						that.MC_addScore.MC_addScore_tween.text_addScore.text = "+1";
 						that.MC_addScore.gotoAndPlay(1);
@@ -2086,33 +2066,24 @@ p.nominalBounds = new cjs.Rectangle(-40,-40,80,79.1);
 		this.btn_goo.addEventListener("click", fl_MouseClickHandler_10.bind(this));
 		function fl_MouseClickHandler_10() {
 			console.log("gameOnFlag-------->" + gameOnFlag);
-			if (gameOnFlag == 1) {
 				you = 0;
 				jankenEvent(you);
-				//gameOnFlag = 0;
-			}
 		}
 		
 		
 		this.btn_choki.addEventListener("click", fl_MouseClickHandler_11.bind(this));
 		function fl_MouseClickHandler_11() {
 			console.log("gameOnFlag-------->" + gameOnFlag);
-			if (gameOnFlag == 1) {
 				you = 1;
 				jankenEvent(you);
-				//gameOnFlag = 0;
-			}
 		}
 		
 		
 		this.btn_par.addEventListener("click", fl_MouseClickHandler_12.bind(this));
 		function fl_MouseClickHandler_12() {
 			console.log("gameOnFlag-------->" + gameOnFlag);
-			if (gameOnFlag == 1) {
 				you = 2;
 				jankenEvent(you);
-				//gameOnFlag = 0;
-			}
 		}
 		console.log("gameOnFlag-------->" + gameOnFlag);
 	}
